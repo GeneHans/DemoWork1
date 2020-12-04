@@ -8,29 +8,80 @@ import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 
-class TestAdapter(arrayData: ArrayList<String>) : RecyclerView.Adapter<TestAdapter.TestViewHolder>() {
+class TestAdapter(arrayData: ArrayList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
     private var listData: List<String> = arrayData
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder {
-        var view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
-        var viewHolder = TestViewHolder(view)
-        viewHolder.btnTest?.setOnClickListener {
-            Toast.makeText(parent.context, "点击了按钮", Toast.LENGTH_SHORT).show()
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
+        return when (viewType) {
+            TYPE_1 -> {
+                var view: View =
+                        LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
+                var viewHolder = TestViewHolder1(view)
+                viewHolder.btnTest?.setOnClickListener {
+                    Toast.makeText(parent.context, "点击了按钮1", Toast.LENGTH_SHORT).show()
+                }
+                viewHolder
+            }
+            TYPE_2 -> {
+                var view: View =
+                        LayoutInflater.from(parent.context).inflate(R.layout.item2_test_layout, parent, false)
+                var viewHolder = TestViewHolder2(view)
+                viewHolder.btnTest?.setOnClickListener {
+                    Toast.makeText(parent.context, "点击了item2按钮", Toast.LENGTH_SHORT).show()
+                }
+                viewHolder
+            }
+            else -> {
+                var view: View =
+                        LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
+                var viewHolder = TestViewHolder1(view)
+                viewHolder.btnTest?.setOnClickListener {
+                    Toast.makeText(parent.context, "点击了按钮1", Toast.LENGTH_SHORT).show()
+                }
+                viewHolder
+            }
         }
-        return viewHolder
     }
 
     override fun getItemCount(): Int {
         return listData.size
     }
 
-    override fun onBindViewHolder(holder: TestViewHolder, position: Int) {
-        holder.textView?.text = listData[position]
+    override fun getItemViewType(position: Int): Int {
+        return when (position % 2) {
+            0 -> {
+                TYPE_1
+            }
+            1 -> {
+                TYPE_2
+            }
+            else -> {
+                TYPE_1
+            }
+        }
+    }
+    override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
+        when (getItemViewType(position)) {
+            TYPE_1 -> {
+                if (holder is TestViewHolder1) {
+                    holder.textView?.text = listData[position]
+                }
+            }
+            TYPE_2 -> {
+                if (holder is TestViewHolder2) {
+                    holder.textView?.text = listData[position]
+                }
+            }
+            else -> {
+                if (holder is TestViewHolder1) {
+                    holder.textView?.text = listData[position]
+                }
+            }
+        }
     }
 
-    class TestViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+    class TestViewHolder1(itemView: View) : RecyclerView.ViewHolder(itemView) {
         var textView: TextView? = null
         var btnTest: Button? = null
 
@@ -38,5 +89,20 @@ class TestAdapter(arrayData: ArrayList<String>) : RecyclerView.Adapter<TestAdapt
             textView = itemView.findViewById(R.id.text_item_test)
             btnTest = itemView.findViewById(R.id.btn_item_test)
         }
+    }
+
+    class TestViewHolder2(itemView: View) : RecyclerView.ViewHolder(itemView) {
+        var textView: TextView? = null
+        var btnTest: Button? = null
+
+        init {
+            textView = itemView.findViewById(R.id.text2_item_test)
+            btnTest = itemView.findViewById(R.id.btn2_item_test)
+        }
+    }
+
+    companion object {
+        const val TYPE_1 = 1
+        const val TYPE_2 = 2
     }
 }
