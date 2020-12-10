@@ -7,10 +7,11 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.testbrvah.TestData
 
-class TestAdapter(arrayData: ArrayList<String>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
+class TestAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {
 
-    private var listData: List<String> = arrayData
+    private var listData: List<TestData> = arrayData
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RecyclerView.ViewHolder {
         return when (viewType) {
@@ -65,17 +66,17 @@ class TestAdapter(arrayData: ArrayList<String>) : RecyclerView.Adapter<RecyclerV
         when (getItemViewType(position)) {
             TYPE_1 -> {
                 if (holder is TestViewHolder1) {
-                    holder.textView?.text = listData[position]
+                    holder.textView?.text = listData[position].textMessage
                 }
             }
             TYPE_2 -> {
                 if (holder is TestViewHolder2) {
-                    holder.textView?.text = listData[position]
+                    holder.textView?.text = listData[position].textMessage
                 }
             }
             else -> {
                 if (holder is TestViewHolder1) {
-                    holder.textView?.text = listData[position]
+                    holder.textView?.text = listData[position].textMessage
                 }
             }
         }

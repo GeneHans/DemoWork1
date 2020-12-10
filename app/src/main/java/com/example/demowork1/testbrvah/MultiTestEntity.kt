@@ -2,9 +2,10 @@ package com.example.demowork1.testbrvah
 
 import com.chad.library.adapter.base.entity.MultiItemEntity
 
-class MultiTestEntity(data: String,type: Int) : MultiItemEntity {
+class MultiTestEntity(data: String, btnText: String, type: Int) : MultiItemEntity {
     private var itemType = type
     var textData = data
+    var btnTextData = btnText
 
     override fun getItemType(): Int {
         return itemType

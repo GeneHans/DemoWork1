@@ -1,12 +1,15 @@
 package com.example.demowork1
 
+import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
+import com.example.demowork1.testbrvah.TestData
 import com.example.demowork1.util.LogUtil
 
 class MainActivity : AppCompatActivity() {
@@ -17,16 +20,33 @@ class MainActivity : AppCompatActivity() {
         listView = findViewById(R.id.list_main)
         var listData = initData()
         var listEntity = ArrayList<MultiTestEntity>()
-        listEntity.add(MultiTestEntity("test1", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("test2", MultiTestEntity.TYPE_2))
-        listEntity.add(MultiTestEntity("test3", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("test4", MultiTestEntity.TYPE_2))
+        setMultiTestAdapter(listEntity)
+    }
+
+    private fun setMultiTestAdapter(listData: ArrayList<MultiTestEntity>) {
+        var listEntity = listData
+        listEntity.add(MultiTestEntity("原生RecyclerView", "跳转", MultiTestEntity.TYPE_1))
+        listEntity.add(MultiTestEntity("test2", "跳转", MultiTestEntity.TYPE_2))
+        listEntity.add(MultiTestEntity("test3", "跳转", MultiTestEntity.TYPE_1))
+        listEntity.add(MultiTestEntity("test4", "跳转", MultiTestEntity.TYPE_2))
         var multiTestAdapter = MultiTestAdapter(listEntity)
         listView?.adapter = multiTestAdapter
+        multiTestAdapter?.setOnItemClickListener { adapter, view, position ->
+            when (position) {
+                0 -> {
+                    var intent = Intent()
+                    intent.setClass(this, RecyclerViewTestActivity::class.java)
+                    startActivity(intent)
+                }
+                else ->{
+                    LogUtil.instance.d("当前位置：$position")
+                }
+            }
+        }
         listView?.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun setSingleTestAdapter(listData: ArrayList<String>) {
+    private fun setSingleTestAdapter(listData: ArrayList<TestData>) {
         var singleAdapter = SingleTestAdapter(R.layout.item_test_layout, listData)
         singleAdapter.setOnItemClickListener { adapter, view, position ->
             LogUtil.instance.d(position.toString())
@@ -35,17 +55,17 @@ class MainActivity : AppCompatActivity() {
         listView?.layoutManager = LinearLayoutManager(this)
     }
 
-    private fun initData(): ArrayList<String> {
-        var listData = ArrayList<String>()
-        listData.add("test1")
-        listData.add("test2")
-        listData.add("test3")
-        listData.add("test4")
+    private fun initData(): ArrayList<TestData> {
+        var listData = ArrayList<TestData>()
+        listData.add(TestData("test1", "测试1"))
+        listData.add(TestData("test2", "测试2"))
+        listData.add(TestData("test3", "测试3"))
+        listData.add(TestData("test4", "测试4"))
         LogUtil.instance.d(listData.toString())
         return listData
     }
 
-    private fun setSimpleAdapter(listData: ArrayList<String>) {
+    private fun setSimpleAdapter(listData: ArrayList<TestData>) {
         var testAdapter = TestAdapter(listData)
         listView?.adapter = testAdapter
         listView?.layoutManager = LinearLayoutManager(this)

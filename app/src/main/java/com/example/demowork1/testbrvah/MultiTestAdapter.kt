@@ -7,7 +7,7 @@ import com.example.demowork1.R
 import com.example.demowork1.util.LogUtil
 
 class MultiTestAdapter(listData: List<MultiTestEntity>) :
-    BaseMultiItemQuickAdapter<MultiTestEntity, BaseViewHolder>(listData) {
+        BaseMultiItemQuickAdapter<MultiTestEntity, BaseViewHolder>(listData) {
 
     init {
         addItemType(MultiTestEntity.TYPE_1, R.layout.item_test_layout)
@@ -21,7 +21,13 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
             MultiTestEntity.TYPE_1 -> {
                 helper?.setText(R.id.text_item_test, item.textData)
                 helper?.getView<Button>(R.id.btn_item_test)?.setOnClickListener {
-                    LogUtil.instance.d("点击了样式1里的按钮" + helper.layoutPosition)
+                    when (helper.layoutPosition) {
+                        POSITION_RECYCLERVIEW -> {
+                        }
+                        else -> {
+
+                        }
+                    }
                 }
             }
             MultiTestEntity.TYPE_2 -> {
@@ -34,5 +40,8 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
                 LogUtil.instance.d("错误类型")
             }
         }
+    }
+    companion object{
+        const val POSITION_RECYCLERVIEW = 1
     }
 }
