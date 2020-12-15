@@ -6,6 +6,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.headList.RecyclerViewTestActivity
+import com.example.demowork1.headList.TestAdapter
+import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
@@ -26,16 +28,21 @@ class MainActivity : AppCompatActivity() {
     private fun setMultiTestAdapter(listData: ArrayList<MultiTestEntity>) {
         var listEntity = listData
         listEntity.add(MultiTestEntity("原生RecyclerView", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("test2", "跳转", MultiTestEntity.TYPE_2))
+        listEntity.add(MultiTestEntity("dataBinding测试demo", "跳转", MultiTestEntity.TYPE_1))
         listEntity.add(MultiTestEntity("test3", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("test4", "跳转", MultiTestEntity.TYPE_2))
+        listEntity.add(MultiTestEntity("test4", "跳转", MultiTestEntity.TYPE_1))
         var multiTestAdapter = MultiTestAdapter(listEntity)
         listView?.adapter = multiTestAdapter
         multiTestAdapter?.setOnItemClickListener { adapter, view, position ->
             when (position) {
-                0 -> {
+                ITEM_RECYCLERVIEW -> {
                     var intent = Intent()
                     intent.setClass(this, RecyclerViewTestActivity::class.java)
+                    startActivity(intent)
+                }
+                ITEM_MVVM ->{
+                    var intent = Intent()
+                    intent.setClass(this,TestMvvmActivity::class.java)
                     startActivity(intent)
                 }
                 else ->{
@@ -70,4 +77,6 @@ class MainActivity : AppCompatActivity() {
         listView?.adapter = testAdapter
         listView?.layoutManager = LinearLayoutManager(this)
     }
+    private val ITEM_RECYCLERVIEW = 0
+    private val ITEM_MVVM = 1
 }

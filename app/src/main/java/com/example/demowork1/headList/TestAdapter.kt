@@ -1,4 +1,4 @@
-package com.example.demowork1
+package com.example.demowork1.headList
 
 import android.view.LayoutInflater
 import android.view.View
@@ -7,6 +7,7 @@ import android.widget.Button
 import android.widget.TextView
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.R
 import com.example.demowork1.testbrvah.TestData
 
 class TestAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<RecyclerView.ViewHolder>() {

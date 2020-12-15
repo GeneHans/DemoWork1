@@ -3,7 +3,6 @@ package com.example.demowork1.headList
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.demowork1.TestAdapter
 
 class TestHeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>, IWrapperAdapter {
     private var mAdapter: TestAdapter? = null

@@ -20,6 +20,7 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
         when (item.itemType) {
             MultiTestEntity.TYPE_1 -> {
                 helper?.setText(R.id.text_item_test, item.textData)
+                helper?.setText(R.id.btn_item_test,item.btnTextData)
                 helper?.getView<Button>(R.id.btn_item_test)?.setOnClickListener {
                     when (helper.layoutPosition) {
                         POSITION_RECYCLERVIEW -> {
@@ -32,6 +33,7 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
             }
             MultiTestEntity.TYPE_2 -> {
                 helper?.setText(R.id.text2_item_test, item.textData)
+                helper?.setText(R.id.btn2_item_test,item.btnTextData)
                 helper?.getView<Button>(R.id.btn2_item_test)?.setOnClickListener {
                     LogUtil.instance.d("点击了样式2里的按钮" + helper.layoutPosition)
                 }
@@ -43,5 +45,6 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
     }
     companion object{
         const val POSITION_RECYCLERVIEW = 1
+        const val POSITION_MVVM = 2
     }
 }

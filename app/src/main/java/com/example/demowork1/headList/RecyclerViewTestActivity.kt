@@ -2,12 +2,9 @@ package com.example.demowork1.headList
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.LayoutInflater
 import android.widget.ListView
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.R
-import com.example.demowork1.TestAdapter
 import com.example.demowork1.testbrvah.TestData
 import com.example.demowork1.util.LogUtil
 
