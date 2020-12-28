@@ -7,6 +7,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.headList.TestAdapter
+import com.example.demowork1.litepal.LitePalActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
@@ -29,7 +30,7 @@ class MainActivity : AppCompatActivity() {
         var listEntity = listData
         listEntity.add(MultiTestEntity("原生RecyclerView", "跳转", MultiTestEntity.TYPE_1))
         listEntity.add(MultiTestEntity("dataBinding测试demo", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("test3", "跳转", MultiTestEntity.TYPE_1))
+        listEntity.add(MultiTestEntity("litePal数据库", "跳转", MultiTestEntity.TYPE_1))
         listEntity.add(MultiTestEntity("test4", "跳转", MultiTestEntity.TYPE_1))
         var multiTestAdapter = MultiTestAdapter(listEntity)
         listView?.adapter = multiTestAdapter
@@ -43,6 +44,11 @@ class MainActivity : AppCompatActivity() {
                 ITEM_MVVM ->{
                     var intent = Intent()
                     intent.setClass(this,TestMvvmActivity::class.java)
+                    startActivity(intent)
+                }
+                ITEM_LITE_PAL ->{
+                    var intent = Intent()
+                    intent.setClass(this,LitePalActivity::class.java)
                     startActivity(intent)
                 }
                 else ->{
@@ -79,4 +85,5 @@ class MainActivity : AppCompatActivity() {
     }
     private val ITEM_RECYCLERVIEW = 0
     private val ITEM_MVVM = 1
+    private val ITEM_LITE_PAL = 2
 }
