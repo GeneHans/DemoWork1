@@ -1,19 +1,14 @@
 package com.example.demowork1.testbrvah
 
-import android.widget.Button
-import android.widget.Toast
 import com.chad.library.adapter.base.BaseQuickAdapter
 import com.chad.library.adapter.base.BaseViewHolder
 import com.example.demowork1.R
 
-class SingleTestAdapter(layoutId: Int, data: List<TestData>) :
-    BaseQuickAdapter<TestData, BaseViewHolder>(layoutId, data) {
+class SingleTestAdapter(layoutId: Int, data: List<SingleTestEntity>) :
+    BaseQuickAdapter<SingleTestEntity, BaseViewHolder>(layoutId, data) {
 
-    override fun convert(helper: BaseViewHolder?, item: TestData?) {
-        helper?.setText(R.id.text_item_test, item?.textMessage ?: "get null data")
-        helper?.setText(R.id.btn_item_test,item?.btnText ?:"测试按钮")
-        helper?.getView<Button>(R.id.btn_item_test)?.setOnClickListener {
-            Toast.makeText(mContext, "点击了按钮:" + helper.layoutPosition, Toast.LENGTH_SHORT).show()
-        }
+    override fun convert(helper: BaseViewHolder?, item: SingleTestEntity?) {
+        helper?.setText(R.id.tv_single_type_title, item?.title ?: "没有标题")
+        helper?.setText(R.id.tv_single_type_content, item?.content ?: "没有内容")
     }
 }
