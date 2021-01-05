@@ -10,7 +10,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoWork1">
-        <activity android:name=".litepal.LitePalActivity"></activity>
+        <activity android:name=".constraintlayout.TestConstraintLayoutActivity"></activity>
+        <activity android:name=".litepal.LitePalActivity" />
         <activity android:name=".mvvm.TestMvvmActivity" />
         <activity android:name=".headList.RecyclerViewTestActivity" />
         <activity android:name=".MainActivity">

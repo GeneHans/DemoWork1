@@ -3,4 +3,5 @@
     <string name="recyclerview_content">Recyclerview原生代码Demo，用来测试添加头部和尾部，框架抽离尝试</string>
     <string name="litepal_content">LitePal数据库框架基本使用练习</string>
     <string name="dataBinding_content">DataBinding工具使用Demo</string>
+    <string name="constraintLayout_content">ConstraintLayout约束布局的使用</string>
 </resources>
