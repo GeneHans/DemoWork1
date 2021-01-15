@@ -6,7 +6,6 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.ItemDecoration
 import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.litepal.LitePalActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
@@ -26,6 +25,10 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+        var permissionManager = PermissionManager.getInstance(this)
+        permissionManager.requestPermission()
+        permissionManager.requestSettingCanDrawOverlays()
+        permissionManager.checkInstallPermission()
         listView = findViewById(R.id.list_main)
         var listData = initData()
         setSingleTestAdapter(listData)
@@ -56,7 +59,7 @@ class MainActivity : AppCompatActivity() {
             }
         }
         listView?.adapter = singleAdapter
-        listView?.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
+        listView?.addItemDecoration(DividerItemDecoration(this, DividerItemDecoration.VERTICAL))
         listView?.layoutManager = LinearLayoutManager(this)
     }
 
@@ -65,7 +68,6 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
         listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
-        listData.add(SingleTestEntity("test4", "测试4"))
         LogUtil.instance.d(listData.toString())
         return listData
     }
@@ -102,5 +104,4 @@ class MainActivity : AppCompatActivity() {
         }
         listView?.layoutManager = LinearLayoutManager(this)
     }
-
 }
