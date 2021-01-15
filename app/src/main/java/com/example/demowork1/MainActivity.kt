@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.litepal.LitePalActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_RECYCLERVIEW = 0
     private val ITEM_MVVM = 1
     private val ITEM_LITE_PAL = 2
+    private val ITEM_CONSTRAINTLAYOUT = 3
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -53,6 +55,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, LitePalActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_CONSTRAINTLAYOUT ->{
+                    var intent = Intent()
+                    intent.setClass(this,TestConstraintLayoutActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -68,6 +75,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
         listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
+        listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         LogUtil.instance.d(listData.toString())
         return listData
     }
