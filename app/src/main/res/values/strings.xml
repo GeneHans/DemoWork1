@@ -4,4 +4,5 @@
     <string name="litepal_content">LitePal数据库框架基本使用练习</string>
     <string name="dataBinding_content">DataBinding工具使用Demo</string>
     <string name="constraintLayout_content">ConstraintLayout约束布局的使用</string>
+    <string name="sqlite_content">Sqlite数据库的基本使用</string>
 </resources>
