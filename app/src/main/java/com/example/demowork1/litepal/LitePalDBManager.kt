@@ -1,4 +1,4 @@
-package com.example.demowork1.manager
+package com.example.demowork1.litepal
 
 import android.database.sqlite.SQLiteDatabase
 import com.example.demowork1.litepal.model.DataEntity1

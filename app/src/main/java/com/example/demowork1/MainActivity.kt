@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.litepal.LitePalActivity
+import com.example.demowork1.manager.PermissionManager
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.sqlite.SQLiteTestActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter

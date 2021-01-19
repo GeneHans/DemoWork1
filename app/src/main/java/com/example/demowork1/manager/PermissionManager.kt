@@ -1,4 +1,4 @@
-package com.example.demowork1
+package com.example.demowork1.manager
 
 import android.Manifest
 import android.app.Activity
