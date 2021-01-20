@@ -1,4 +1,4 @@
-package com.example.demowork1.sqlite
+package com.example.demowork1.database.sqlite
 
 import android.content.ContentValues
 import android.content.Context
@@ -14,7 +14,13 @@ class SQLiteDBManager(var context: Context) {
      * 创建数据库对象
      */
     fun createDb(version: Int) {
-        var sqLiteHelper = DataBaseHelper(context, "sqlite_test", null, version, null)
+        var sqLiteHelper = DataBaseHelper(
+            context,
+            "sqlite_test",
+            null,
+            version,
+            null
+        )
         sqLiteDB = sqLiteHelper.readableDatabase
         //和read方法一样都能够获得一个可读写的数据库对象，注意和read的区别
 //        sqLiteDB = sqLiteHelper.writableDatabase
@@ -33,7 +39,8 @@ class SQLiteDBManager(var context: Context) {
                 var values = ContentValues()
                 values.put(TablePerson.ID_COLUMN, person.id)
                 values.put(TablePerson.NAME_COLUMN, person.name)
-                sqLiteDB?.insert(DataBaseHelper.TEST_TABLE_NAME, null, values)
+                sqLiteDB?.insert(
+                    DataBaseHelper.TEST_TABLE_NAME, null, values)
             }
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
@@ -225,7 +232,10 @@ class SQLiteDBManager(var context: Context) {
     fun queryTest2(id: Int) {
         var result = sqLiteDB?.query(
             DataBaseHelper.TEST_TABLE_NAME,
-            arrayOf(TablePerson.ID_COLUMN, TablePerson.NAME_COLUMN), "id>?",
+            arrayOf(
+                TablePerson.ID_COLUMN,
+                TablePerson.NAME_COLUMN
+            ), "id>?",
             arrayOf(id.toString()), null, null, null
         ) ?: return
         result.moveToFirst()

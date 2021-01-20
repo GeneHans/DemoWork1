@@ -1,4 +1,4 @@
-package com.example.demowork1.sqlite
+package com.example.demowork1.database.sqlite
 
 import android.content.Context
 import android.database.DatabaseErrorHandler

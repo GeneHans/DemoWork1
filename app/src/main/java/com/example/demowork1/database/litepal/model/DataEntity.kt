@@ -1,4 +1,4 @@
-package com.example.demowork1.litepal.model
+package com.example.demowork1.database.litepal.model
 
 import org.litepal.crud.LitePalSupport
 

@@ -25,9 +25,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoWork1">
-        <activity android:name=".sqlite.SQLiteTestActivity"></activity>
+        <activity android:name=".database.dbflow.DBFlowTestActivity"></activity>
+        <activity android:name=".database.sqlite.SQLiteTestActivity" />
         <activity android:name=".constraintlayout.TestConstraintLayoutActivity" />
-        <activity android:name=".litepal.LitePalActivity" />
+        <activity android:name=".database.litepal.LitePalActivity" />
         <activity android:name=".mvvm.TestMvvmActivity" />
         <activity android:name=".headList.RecyclerViewTestActivity" />
         <activity android:name=".MainActivity">

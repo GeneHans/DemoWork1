@@ -4,6 +4,8 @@ plugins {
     id 'kotlin-kapt'
 }
 
+def dbflow_version = "4.2.4"
+
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.2"
@@ -54,5 +56,13 @@ dependencies {
     //Android SQLite操作框架
     implementation 'org.litepal.guolindev:core:3.1.1'
 
+    //MMKV
     implementation 'com.tencent:mmkv:1.2.7'
+
+    //DBFlow
+    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
+    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
+    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
+// sql-cipher database encyrption (optional)
+    implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
 }

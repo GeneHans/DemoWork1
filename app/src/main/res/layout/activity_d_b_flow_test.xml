@@ -4,8 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".database.sqlite.SQLiteTestActivity">
-
+    tools:context=".database.dbflow.DBFlowTestActivity">
     <Button
         android:id="@+id/btn_add"
         android:layout_width="wrap_content"

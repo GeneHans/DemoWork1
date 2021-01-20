@@ -7,11 +7,12 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
+import com.example.demowork1.database.dbflow.DBFlowTestActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
-import com.example.demowork1.litepal.LitePalActivity
+import com.example.demowork1.database.litepal.LitePalActivity
 import com.example.demowork1.manager.PermissionManager
 import com.example.demowork1.mvvm.TestMvvmActivity
-import com.example.demowork1.sqlite.SQLiteTestActivity
+import com.example.demowork1.database.sqlite.SQLiteTestActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
@@ -25,6 +26,7 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_LITE_PAL = 2
     private val ITEM_CONSTRAINTLAYOUT = 3
     private val ITEM_SQLITE = 4
+    private val ITEM_DBFLOW = 5
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -58,14 +60,19 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, LitePalActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_CONSTRAINTLAYOUT ->{
+                ITEM_CONSTRAINTLAYOUT -> {
                     var intent = Intent()
-                    intent.setClass(this,TestConstraintLayoutActivity::class.java)
+                    intent.setClass(this, TestConstraintLayoutActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_SQLITE ->{
+                ITEM_SQLITE -> {
                     var intent = Intent()
-                    intent.setClass(this,SQLiteTestActivity::class.java)
+                    intent.setClass(this, SQLiteTestActivity::class.java)
+                    startActivity(intent)
+                }
+                ITEM_DBFLOW -> {
+                    var intent = Intent()
+                    intent.setClass(this, DBFlowTestActivity::class.java)
                     startActivity(intent)
                 }
                 else -> {
@@ -85,6 +92,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
         listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
+        listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         return listData
     }
 

@@ -1,4 +1,4 @@
-package com.example.demowork1.litepal
+package com.example.demowork1.database.litepal
 
 import android.os.Bundle
 import android.widget.Button
@@ -6,7 +6,7 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demowork1.R
-import com.example.demowork1.litepal.model.DataEntity1
+import com.example.demowork1.database.litepal.model.DataEntity1
 import com.example.demowork1.util.LogUtil
 import org.litepal.LitePal
 import java.lang.Exception
@@ -14,7 +14,8 @@ import java.lang.Exception
 
 class LitePalActivity : AppCompatActivity() {
 
-    private var testData1 = DataEntity1(1,"aaa")
+    private var testData1 =
+        DataEntity1(1, "aaa")
     private var textShow:TextView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +27,8 @@ class LitePalActivity : AppCompatActivity() {
         var btnDelete: Button = findViewById(R.id.btn_delete)
         var btnUpdate: Button = findViewById(R.id.btn_update)
         var editText:EditText = findViewById(R.id.edit_text_data)
-        var testData1 = DataEntity1(1,"aaa")
+        var testData1 =
+            DataEntity1(1, "aaa")
         btnAdd.setOnClickListener {
             addData("ccc")
         }

@@ -1,9 +1,9 @@
-package com.example.demowork1.litepal
+package com.example.demowork1.database.litepal
 
 import android.database.sqlite.SQLiteDatabase
-import com.example.demowork1.litepal.model.DataEntity1
-import com.example.demowork1.litepal.model.DataEntity2
-import com.example.demowork1.litepal.model.DataEntity3
+import com.example.demowork1.database.litepal.model.DataEntity1
+import com.example.demowork1.database.litepal.model.DataEntity2
+import com.example.demowork1.database.litepal.model.DataEntity3
 import com.example.demowork1.util.LogUtil
 import org.litepal.LitePal
 import org.litepal.LitePal.use
