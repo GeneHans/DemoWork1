@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import com.example.demowork1.database.litepal.LitePalDBManager
 import com.example.demowork1.database.sqlite.SQLiteDBManager
+import com.example.demowork1.util.CrashHandler
 import com.raizlabs.android.dbflow.config.FlowConfig
 import com.raizlabs.android.dbflow.config.FlowLog
 import com.raizlabs.android.dbflow.config.FlowManager
@@ -16,7 +17,7 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mContext = this
-
+        var crashHandler = CrashHandler.newInstance(this)
         //DbFlow初始化
         FlowManager.init(this)
 
