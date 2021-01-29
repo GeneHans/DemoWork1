@@ -6,4 +6,5 @@
     <string name="constraintLayout_content">ConstraintLayout约束布局的使用</string>
     <string name="sqlite_content">Sqlite数据库的基本使用</string>
     <string name="dbflow_content">DBFlow数据库的基本使用</string>
+    <string name="test_fragment_content">Fragment关于状态保存和恢复的测试</string>
 </resources>
