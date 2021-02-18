@@ -17,7 +17,6 @@ import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
-import com.example.demowork1.testfragment.TestFragmentActivity
 import com.example.demowork1.util.LogUtil
 
 class MainActivity : AppCompatActivity() {
@@ -28,7 +27,6 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_CONSTRAINTLAYOUT = 3
     private val ITEM_SQLITE = 4
     private val ITEM_DBFLOW = 5
-    private val ITEM_FRAGMENT = 6
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -77,11 +75,6 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, DBFlowTestActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_FRAGMENT -> {
-                    var intent = Intent()
-                    intent.setClass(this, TestFragmentActivity::class.java)
-                    startActivity(intent)
-                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -100,7 +93,6 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
-        listData.add(SingleTestEntity("Fragment", getString(R.string.test_fragment_content)))
         return listData
     }
 

@@ -2,7 +2,6 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'org.greenrobot.greendao'
 }
 
 def dbflow_version = "4.2.4"
@@ -37,16 +36,6 @@ android {
     dataBinding {
         enabled true
     }
-
-    sourceSets {
-        main {
-            java.srcDirs = ['src/main/java']
-            jniLibs.srcDirs = ['libs']
-            assets.srcDirs = ['assets']
-            res.srcDirs = ['src/main/res','src/main/res/layout',
-                           'src/main/res/layout_resize']
-        }
-    }
 }
 
 dependencies {
@@ -76,15 +65,4 @@ dependencies {
     implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
 // sql-cipher database encyrption (optional)
     implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
-
-    //GreenDao
-    implementation 'org.greenrobot:greendao:3.3.0' // 添加库
-}
-greendao {
-    // 数据库版本号
-    schemaVersion 1
-    // 生成数据库文件的目录
-//    targetGenDir 'src/main/java/greendao'
-    // 生成的数据库相关文件的包名
-//    daoPackage 'com.example.d6m03_1.db'
 }
