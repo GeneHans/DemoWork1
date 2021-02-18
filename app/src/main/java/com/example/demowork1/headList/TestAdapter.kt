@@ -20,27 +20,18 @@ class TestAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<Recycle
                 var view: View =
                         LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
                 var viewHolder = TestViewHolder1(view)
-                viewHolder.btnTest?.setOnClickListener {
-                    Toast.makeText(parent.context, "点击了按钮1", Toast.LENGTH_SHORT).show()
-                }
                 viewHolder
             }
             TYPE_2 -> {
                 var view: View =
                         LayoutInflater.from(parent.context).inflate(R.layout.item2_test_layout, parent, false)
                 var viewHolder = TestViewHolder2(view)
-                viewHolder.btnTest?.setOnClickListener {
-                    Toast.makeText(parent.context, "点击了item2按钮", Toast.LENGTH_SHORT).show()
-                }
                 viewHolder
             }
             else -> {
                 var view: View =
                         LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
                 var viewHolder = TestViewHolder1(view)
-                viewHolder.btnTest?.setOnClickListener {
-                    Toast.makeText(parent.context, "点击了按钮1", Toast.LENGTH_SHORT).show()
-                }
                 viewHolder
             }
         }

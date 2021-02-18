@@ -2,7 +2,13 @@ package com.example.demowork1.headList
 
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Button
+import android.widget.ImageView
+import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.R
+import com.example.demowork1.util.LogUtil
+import java.util.logging.Logger
 
 class TestHeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>, IWrapperAdapter {
     private var mAdapter: TestAdapter? = null
@@ -11,9 +17,9 @@ class TestHeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>, IWrappe
     private var currentPosition: Int = 0
 
     constructor(
-        headViews: ArrayList<View>,
-        footViews: ArrayList<View>,
-        adapter: TestAdapter
+            headViews: ArrayList<View>,
+            footViews: ArrayList<View>,
+            adapter: TestAdapter
     ) {
         headerViews = headViews
         footerViews = footViews
@@ -72,8 +78,9 @@ class TestHeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>, IWrappe
 
     override fun onBindViewHolder(holder: RecyclerView.ViewHolder, position: Int) {
         var headCount = getHeaderCount()
-        if (position < headCount)
+        if (position < headCount) {
             return
+        }
         var cPosition = position - headCount
         if (mAdapter != null) {
             var adapterCount = mAdapter!!.itemCount
@@ -92,8 +99,8 @@ class TestHeaderAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>, IWrappe
     }
 
     companion object {
-        const val TYPE_HEADER = 1
-        const val TYPE_FOOTER = 2
-        const val TYPE_INVALID = -1
+        const val TYPE_HEADER = -1
+        const val TYPE_FOOTER = -2
+        const val TYPE_INVALID = -3
     }
 }

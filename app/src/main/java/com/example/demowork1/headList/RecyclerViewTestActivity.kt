@@ -3,7 +3,9 @@ package com.example.demowork1.headList
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.ListView
+import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.R
 import com.example.demowork1.testbrvah.TestData
 import com.example.demowork1.util.LogUtil
@@ -25,15 +27,17 @@ class RecyclerViewTestActivity : AppCompatActivity() {
         listData.add(TestData("test2", "测试2"))
         listData.add(TestData("test3", "测试3"))
         listData.add(TestData("test4", "测试4"))
-        LogUtil.instance.d(listData.toString())
         return listData
     }
 
     private fun setSimpleAdapter(listData: ArrayList<TestData>) {
+        var headView1 = TestHeaderView(this)
+        var footView1 = TestHeaderView(this)
         var testAdapter = TestAdapter(listData)
-        var headView = TestHeaderView(this)
-        listView?.addHeaderView(headView)
+        listView?.addHeaderView(headView1)
+        listView?.addFooterView(footView1)
         listView?.setAdapter(testAdapter)
+        listView?.addItemDecoration(DividerItemDecoration(this,DividerItemDecoration.VERTICAL))
         listView?.layoutManager = LinearLayoutManager(this)
     }
 }
