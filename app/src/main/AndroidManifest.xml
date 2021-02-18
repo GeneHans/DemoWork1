@@ -11,6 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoWork1">
         <activity android:name=".testfragment.TestFragmentActivity"></activity>
+        <activity android:name=".database.greendao.GreenDaoTestActivity"></activity>
         <activity android:name=".database.dbflow.DBFlowTestActivity" />
         <activity android:name=".database.sqlite.SQLiteTestActivity" />
         <activity android:name=".constraintlayout.TestConstraintLayoutActivity" />

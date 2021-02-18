@@ -192,7 +192,7 @@ class SQLiteDBManager(var context: Context) {
      */
     fun checkExistData(id: Int): Boolean {
         val result =
-            sqLiteDB?.rawQuery("select * from person where id>?", arrayOf(id.toString()))
+            sqLiteDB?.rawQuery("select * from person where id=?", arrayOf(id.toString()))
                 ?: return false
         result.moveToFirst()
         var isExist = false
