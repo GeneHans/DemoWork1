@@ -1,6 +1,9 @@
 package com.example.demowork1
 
+import android.content.Context
 import android.content.Intent
+import android.net.ConnectivityManager
+import android.net.NetworkRequest
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
@@ -18,6 +21,7 @@ import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
 import com.example.demowork1.util.LogUtil
+import com.example.demowork1.util.NetUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -90,7 +94,12 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
         listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
-        listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
+        listData.add(
+            SingleTestEntity(
+                "ConstraintLayout",
+                getString(R.string.constraintLayout_content)
+            )
+        )
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         return listData
@@ -127,5 +136,11 @@ class MainActivity : AppCompatActivity() {
             }
         }
         listView?.layoutManager = LinearLayoutManager(this)
+    }
+
+    private fun setNetListener() {
+        var request = NetworkRequest.Builder().build()
+        var connMgr = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        connMgr.registerNetworkCallback(request, NetUtil.instance)
     }
 }
