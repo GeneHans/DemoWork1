@@ -13,3 +13,4 @@
 2. BRVAH列表框架
 3. UncaughtExceptionHandler
 4. PingUtil，通过使用Ping指令来测试网络的连通性。
+5. NetUtil，判断网络连接状态，设置网络监听的基本使用。

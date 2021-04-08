@@ -49,6 +49,14 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.2'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
 
+    // ... more entries
+    testCompile 'junit:junit:4.12'
+
+    // required if you want to use Mockito for unit tests
+    testCompile 'org.mockito:mockito-core:2.7.22'
+    // required if you want to use Mockito for Android tests
+    androidTestCompile 'org.mockito:mockito-android:2.7.22'
+
     implementation 'com.github.CymChad:BaseRecyclerViewAdapterHelper:2.9.30'
 
     //数据解析

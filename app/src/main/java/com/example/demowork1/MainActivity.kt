@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.demowork1.anim.TestAnimActivity
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
 import com.example.demowork1.database.dbflow.DBFlowTestActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
@@ -31,6 +32,7 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_CONSTRAINTLAYOUT = 3
     private val ITEM_SQLITE = 4
     private val ITEM_DBFLOW = 5
+    private val ITEM_ANIM = 6
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,6 +81,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, DBFlowTestActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_ANIM -> {
+                    var intent = Intent()
+                    intent.setClass(this, TestAnimActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -102,6 +109,7 @@ class MainActivity : AppCompatActivity() {
         )
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
+        listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
         return listData
     }
 
