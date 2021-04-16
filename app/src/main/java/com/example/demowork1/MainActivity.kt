@@ -151,4 +151,14 @@ class MainActivity : AppCompatActivity() {
         var connMgr = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
         connMgr.registerNetworkCallback(request, NetUtil.instance)
     }
+
+    /**
+     * 打开其他应用
+     */
+    private fun openOtherApp(){
+        var intent=packageManager.getLaunchIntentForPackage("com.xxxx.xxxxx")
+        intent?.addCategory(Intent.CATEGORY_LAUNCHER)
+        intent?.flags = Intent.FLAG_ACTIVITY_NEW_TASK
+        startActivity(intent)
+    }
 }

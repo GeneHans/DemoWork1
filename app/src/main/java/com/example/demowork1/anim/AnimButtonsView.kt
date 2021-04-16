@@ -253,6 +253,8 @@ class AnimButtonsView @JvmOverloads constructor(
     private fun setFlashAlphaAnim(view: View?) {
         var animation: AlphaAnimation = AlphaAnimation(0f, 1.0f)
         animation.duration = 1000
+        animation.repeatMode = Animation.REVERSE
+        animation.repeatCount = 3
         view?.startAnimation(animation)
     }
 
@@ -274,6 +276,7 @@ class AnimButtonsView @JvmOverloads constructor(
     private fun setFlashRotationAnim(view: View?) {
         var animation = RotateAnimation(0f, 90f, 0.5f, 0.5f)
         animation.duration = 1000
+        animation.fillAfter = true
         view?.startAnimation(animation)
     }
 
