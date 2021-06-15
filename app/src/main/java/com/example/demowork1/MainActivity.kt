@@ -17,6 +17,7 @@ import com.example.demowork1.database.litepal.LitePalActivity
 import com.example.demowork1.manager.PermissionManager
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.database.sqlite.SQLiteTestActivity
+import com.example.demowork1.testListPages.TestListPageActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
 import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
@@ -33,6 +34,7 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_SQLITE = 4
     private val ITEM_DBFLOW = 5
     private val ITEM_ANIM = 6
+    private val ITEM_PAGE_LIST = 7
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -86,6 +88,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, TestAnimActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_PAGE_LIST ->{
+                    var intent = Intent()
+                    intent.setClass(this,TestListPageActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -110,6 +117,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
+        listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
         return listData
     }
 

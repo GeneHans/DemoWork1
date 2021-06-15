@@ -2,8 +2,10 @@ package com.example.demowork1
 
 import android.app.Application
 import android.content.Context
+import androidx.room.Room
 import com.example.demowork1.database.litepal.LitePalDBManager
 import com.example.demowork1.database.sqlite.SQLiteDBManager
+import com.example.demowork1.room.DemoWorkDataBase
 import com.example.demowork1.util.CrashHandler
 import com.raizlabs.android.dbflow.config.FlowConfig
 import com.raizlabs.android.dbflow.config.FlowLog
@@ -32,9 +34,10 @@ class DemoApplication : Application() {
         LitePal.initialize(this)
         LitePalDBManager.instance.initDB()
         SQLiteDBManager.getInstance(this).createDb(1)
+        Room.databaseBuilder(this,DemoWorkDataBase::class.java,DemoWorkDataBase.RoomDataBaseName)
     }
 
     companion object {
-        var mContext: Context? = null
+        lateinit var mContext: Context
     }
 }
