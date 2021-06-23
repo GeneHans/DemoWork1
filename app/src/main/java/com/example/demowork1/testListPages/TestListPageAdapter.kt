@@ -5,7 +5,6 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import androidx.paging.PagedListAdapter
 import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
@@ -13,11 +12,11 @@ import com.example.demowork1.R
 import com.example.demowork1.room.TestListPageEntity
 
 class TestListPageAdapter :
-    PagingDataAdapter<TestListPageEntity, TestListPageAdapter.TestViewHolder1>(TestItemCallBack()) {
+        PagingDataAdapter<TestListPageEntity, TestListPageAdapter.TestViewHolder1>(TestItemCallBack()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TestViewHolder1 {
         var view: View =
-            LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
+                LayoutInflater.from(parent.context).inflate(R.layout.item_test_layout, parent, false)
         return TestViewHolder1(view)
     }
 

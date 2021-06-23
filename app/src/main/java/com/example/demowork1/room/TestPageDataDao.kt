@@ -21,6 +21,10 @@ abstract class TestPageDataDao {
     @Query("SELECT * FROM " + TestListPageEntity.tableName + " where id = (:id)")
     abstract fun queryById(id: Long): TestListPageEntity?
 
+    @Query("SELECT * FROM " + TestListPageEntity.tableName + " where id >= (:id1) and id <=(:id2)")
+    abstract suspend fun queryLowerId(id1: Long,id2:Long): List<TestListPageEntity>?
+
+
     @Query("delete from " + TestListPageEntity.tableName + " where id =(:id)")
     abstract fun deleteById(id: Long)
 
