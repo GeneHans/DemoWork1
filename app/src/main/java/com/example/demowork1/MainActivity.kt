@@ -10,6 +10,7 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.anim.TestAnimActivity
+import com.example.demowork1.annotation.AnnotationTestActivity
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
 import com.example.demowork1.database.dbflow.DBFlowTestActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
@@ -27,14 +28,24 @@ import com.example.demowork1.util.NetUtil
 
 class MainActivity : AppCompatActivity() {
 
+    //原生的RecyclerView
     private val ITEM_RECYCLERVIEW = 0
+    //dataBinding测试demo
     private val ITEM_MVVM = 1
+    //litePal数据库
     private val ITEM_LITE_PAL = 2
+    //ConstraintLayout
     private val ITEM_CONSTRAINTLAYOUT = 3
+    //SQLite
     private val ITEM_SQLITE = 4
+    //DBFlow
     private val ITEM_DBFLOW = 5
+    //Android动画
     private val ITEM_ANIM = 6
+    //android列表分页
     private val ITEM_PAGE_LIST = 7
+    //注解学习
+    private val ITEM_ANNOTATION = 8
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,6 +104,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this,TestListPageActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_ANNOTATION ->{
+                    var intent = Intent()
+                    intent.setClass(this,AnnotationTestActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -108,16 +124,12 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
         listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
-        listData.add(
-            SingleTestEntity(
-                "ConstraintLayout",
-                getString(R.string.constraintLayout_content)
-            )
-        )
+        listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
         listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
+        listData.add(SingleTestEntity("android注解学习", getString(R.string.annotation_content)))
         return listData
     }
 

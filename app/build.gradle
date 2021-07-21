@@ -37,6 +37,9 @@ android {
         enabled true
     }
 }
+configurations {
+    all*.exclude group: 'com.google.guava', module: 'listenablefuture'
+}
 
 dependencies {
 
@@ -107,4 +110,9 @@ dependencies {
     implementation "androidx.room:room-guava:$room_version"
     // optional - Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
+
+    implementation project(path: ':shapeTest')
+    annotationProcessor project(':shapeTest')
+    implementation project(path: ':annotationTest')
+    annotationProcessor project(':annotationTest')
 }

@@ -8,4 +8,5 @@
     <string name="dbflow_content">DBFlow数据库的基本使用</string>
     <string name="anim_content">android动画练习demo</string>
     <string name="list_page_content">android列表分页显示</string>
+    <string name="annotation_content">Android注解学习</string>
 </resources>

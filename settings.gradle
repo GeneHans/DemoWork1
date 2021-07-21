@@ -1,2 +1,4 @@
+include ':annotationTest'
+include ':shapeTest'
 include ':app'
 rootProject.name = "DemoWork1"
