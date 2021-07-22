@@ -1,5 +1,7 @@
 package com.example.shapetest.shape;
 
+import com.example.annotationtest.ShapeFactory;
+
 import javax.lang.model.element.TypeElement;
 import javax.lang.model.type.DeclaredType;
 import javax.lang.model.type.MirroredTypeException;

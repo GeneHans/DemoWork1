@@ -1,5 +1,6 @@
 package com.example.shapetest.shape;
 
+import com.example.annotationtest.ShapeFactory;
 import com.google.auto.service.AutoService;
 
 import java.io.IOException;
@@ -125,7 +126,7 @@ public class ShapeFactoryProcessor extends AbstractProcessor {
         }
 
         //有抽象方法终止编译
-        if (!classElement.getModifiers().contains(Modifier.ABSTRACT)) {
+        if (classElement.getModifiers().contains(Modifier.ABSTRACT)) {
             throw new ProcessingException(classElement, "the class %s is abstract，can't annotate abstract class", classElement.getQualifiedName().toString());
         }
 

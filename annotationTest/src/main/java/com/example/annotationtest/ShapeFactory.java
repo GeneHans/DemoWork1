@@ -1,4 +1,4 @@
-package com.example.shapetest.shape;
+package com.example.annotationtest;
 
 import java.lang.annotation.ElementType;
 import java.lang.annotation.Retention;
