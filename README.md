@@ -7,6 +7,10 @@
 4. ConstraintLayout约束布局的使用
 5. Sqlite的基本使用代码
 6. DbFlow数据库的基本使用代码
+7. 动画学习
+8. 列表分页
+9. APT与注解练习
+10. TextInputLayout
 
 除了如下几项大块的内容之外，项目中还使用如下几项内容：
 1. MMKV，用来取代SP存储

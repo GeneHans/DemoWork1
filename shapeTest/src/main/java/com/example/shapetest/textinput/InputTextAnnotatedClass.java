@@ -1,6 +1,6 @@
-package com.example.shapetest.shape;
+package com.example.shapetest.textinput;
 
-import com.example.annotationtest.ShapeFactory;
+import com.example.annotationtest.InputAnnotation;
 import com.example.shapetest.AnnotatedClass;
 
 import javax.lang.model.element.TypeElement;
@@ -10,7 +10,7 @@ import javax.lang.model.type.MirroredTypeException;
 /**
  * 存放annotationElement信息
  */
-public class FactoryAnnotatedClass extends AnnotatedClass {
+public class InputTextAnnotatedClass extends AnnotatedClass {
     private TypeElement mAnnotatedClassElement;
     //annotation type的完整类名
     private String mQualifiedSuperClassName;
@@ -18,14 +18,14 @@ public class FactoryAnnotatedClass extends AnnotatedClass {
     //annotation id
     private String mId;
 
-    public FactoryAnnotatedClass(TypeElement classElement) {
+    public InputTextAnnotatedClass(TypeElement classElement) {
         this.mAnnotatedClassElement = classElement;
-        ShapeFactory annotation = classElement.getAnnotation(ShapeFactory.class);
+        InputAnnotation annotation = classElement.getAnnotation(InputAnnotation.class);
         mId = annotation.id();
         if (mId.length() == 0) {
             throw new IllegalArgumentException(
                     String.format("id() in @%s for class %s is null or empty! that's not allowed",
-                            ShapeFactory.class.getSimpleName(), classElement.getQualifiedName().toString()));
+                            InputAnnotation.class.getSimpleName(), classElement.getQualifiedName().toString()));
         }
         // Get the full QualifiedTypeName
         try {  // 该类已经被编译

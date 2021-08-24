@@ -1,0 +1,25 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+start
+:需求评审;
+:更新业务流程图;
+    note right
+        plantUml
+        git保存
+    end note
+fork
+    :更新单元测试;
+fork again
+    :核对需求逻辑;
+end fork
+:需求开发;
+:文档生成;
+stop
+@enduml
+
+@startuml
+start
+
+stop
+@enduml

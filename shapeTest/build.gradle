@@ -16,4 +16,9 @@ dependencies {
     implementation "com.squareup:javapoet:1.13.0"
 
     implementation project(':annotationTest')//依赖刚刚创建的annotation模块
+
+    // 中文乱码问题（错误: 编码GBK的不可映射字符）
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+    }
 }

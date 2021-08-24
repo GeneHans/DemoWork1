@@ -8,6 +8,5 @@ public class Circle implements IShape {
     @Override
     public void draw() {
         LogUtil.Companion.getInstance().d("这是一个圆形");
-        System.out.println("这是一个圆形");
     }
 }

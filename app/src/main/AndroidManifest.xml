@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoWork1">
-        <activity android:name=".annotation.AnnotationTestActivity"></activity>
+        <activity android:name=".simplework.ViewDemoActivity"></activity>
+        <activity android:name=".annotation.AnnotationTestActivity" />
         <activity android:name=".testListPages.TestListPageActivity" />
         <activity android:name=".anim.TestAnimActivity" />
         <activity android:name=".database.dbflow.DBFlowTestActivity" />
