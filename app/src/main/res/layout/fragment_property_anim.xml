@@ -7,22 +7,16 @@
     tools:context=".anim.PropertyAnimFragment">
 
     <Button
-        android:id="@+id/btn_pro_anim3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="执行动画" />
-
-    <Button
-        android:id="@+id/btn_pro_anim2"
+        android:id="@+id/btn_pro_anim_add"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="添加动画" />
 
     <Button
-        android:id="@+id/btn_pro_anim1"
+        android:id="@+id/btn_pro_anim_run"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="执行view添加删除等" />
+        android:text="执行动画" />
 
     <LinearLayout
         android:id="@+id/ll_property_anim"

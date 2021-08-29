@@ -24,8 +24,6 @@ class PointAnimView @JvmOverloads constructor(
     var pointStart: Point = Point(DEFAULT_RADIUS, DEFAULT_RADIUS)
     var pointEnd: Point = Point(DEFAULT_RADIUS, DEFAULT_RADIUS)
 
-    private val interpolatorType: TimeInterpolator = LinearInterpolator()
-
     init {
         mPaint.color = Color.TRANSPARENT
         linePaint.color = Color.BLACK
@@ -41,6 +39,7 @@ class PointAnimView @JvmOverloads constructor(
     fun setAnimation() {
         pointEnd.x = width - DEFAULT_RADIUS
         pointEnd.y = height - DEFAULT_RADIUS
+        //指定View的动画轨迹
         var valueAnimator: ValueAnimator =
             ValueAnimator.ofObject(PointSinEvaluator(), pointStart, pointEnd)
         valueAnimator.repeatCount = -1
