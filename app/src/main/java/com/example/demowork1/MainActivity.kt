@@ -19,6 +19,7 @@ import com.example.demowork1.manager.PermissionManager
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.database.sqlite.SQLiteTestActivity
 import com.example.demowork1.notification.NotificationActivity
+import com.example.demowork1.sensor.SensorTestActivity
 import com.example.demowork1.simplework.ViewDemoActivity
 import com.example.demowork1.testListPages.TestListPageActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
@@ -50,8 +51,10 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_ANNOTATION = 8
     //通知练习
     private val ITEM_NOTIFICATION = 9
+    //摇一摇demo
+    private val ITEM_SENSOR = 10
     //简单内容练习
-    private val ITEM_VIEW_DEMO = 10
+    private val ITEM_VIEW_DEMO = 11
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -120,6 +123,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this,NotificationActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_SENSOR ->{
+                    var intent = Intent()
+                    intent.setClass(this,SensorTestActivity::class.java)
+                    startActivity(intent)
+                }
                 ITEM_VIEW_DEMO ->{
                     var intent = Intent()
                     intent.setClass(this,ViewDemoActivity::class.java)
@@ -147,6 +155,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
         listData.add(SingleTestEntity("android注解学习", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("android通知学习", getString(R.string.notification_test_content)))
+        listData.add(SingleTestEntity("摇一摇Demo", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
         return listData
     }

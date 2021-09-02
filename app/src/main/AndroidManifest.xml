@@ -25,7 +25,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DemoWork1">
-        <activity android:name=".notification.NotificationActivity"></activity>
+        <activity android:name=".sensor.SensorTestActivity"></activity>
+        <activity android:name=".notification.NotificationActivity" />
         <activity android:name=".simplework.ViewDemoActivity" />
         <activity android:name=".annotation.AnnotationTestActivity" />
         <activity android:name=".testListPages.TestListPageActivity" />
@@ -36,12 +37,15 @@
         <activity android:name=".database.litepal.LitePalActivity" />
         <activity android:name=".mvvm.TestMvvmActivity" />
         <activity android:name=".headList.RecyclerViewTestActivity" />
-        <receiver android:name=".notification.NotificationReceiver"
+
+        <receiver
+            android:name=".notification.NotificationReceiver"
             android:exported="true">
             <intent-filter>
-                <action android:name="com.demowork1.notification"/>
+                <action android:name="com.demowork1.notification" />
             </intent-filter>
         </receiver>
+
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
