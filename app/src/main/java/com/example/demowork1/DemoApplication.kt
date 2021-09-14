@@ -3,6 +3,7 @@ package com.example.demowork1
 import android.app.Application
 import android.content.Context
 import androidx.room.Room
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.demowork1.database.litepal.LitePalDBManager
 import com.example.demowork1.database.sqlite.SQLiteDBManager
 import com.example.demowork1.room.DemoWorkDataBase
@@ -19,6 +20,11 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mContext = this
+        ARouter.init(this)
+        if(BuildConfig.DEBUG) {
+//            ARouter.openLog()
+//            ARouter.openDebug()
+        }
         var crashHandler = CrashHandler.newInstance(this)
         //DbFlow初始化
         FlowManager.init(this)

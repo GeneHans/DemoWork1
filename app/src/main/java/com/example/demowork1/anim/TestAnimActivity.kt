@@ -10,10 +10,12 @@ import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager
 import androidx.fragment.app.FragmentPagerAdapter
 import androidx.viewpager.widget.ViewPager
+import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.demowork1.R
+import com.example.demowork1.util.PathUtil
 import com.google.android.material.tabs.TabLayout
 
-
+@Route(path = PathUtil.ITEM_ANIM)
 class TestAnimActivity : AppCompatActivity() {
 
     lateinit var tabLayout: TabLayout

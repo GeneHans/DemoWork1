@@ -9,15 +9,15 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.demowork1.anim.TestAnimActivity
+import com.alibaba.android.arouter.launcher.ARouter
 import com.example.demowork1.annotation.AnnotationTestActivity
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
 import com.example.demowork1.database.dbflow.DBFlowTestActivity
-import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.database.litepal.LitePalActivity
+import com.example.demowork1.database.sqlite.SQLiteTestActivity
+import com.example.demowork1.headList.RecyclerViewTestActivity
 import com.example.demowork1.manager.PermissionManager
 import com.example.demowork1.mvvm.TestMvvmActivity
-import com.example.demowork1.database.sqlite.SQLiteTestActivity
 import com.example.demowork1.notification.NotificationActivity
 import com.example.demowork1.sensor.SensorTestActivity
 import com.example.demowork1.simplework.ViewDemoActivity
@@ -28,6 +28,7 @@ import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.NetUtil
+import com.example.demowork1.util.PathUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -104,9 +105,7 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 ITEM_ANIM -> {
-                    var intent = Intent()
-                    intent.setClass(this, TestAnimActivity::class.java)
-                    startActivity(intent)
+                    ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
                 }
                 ITEM_PAGE_LIST ->{
                     var intent = Intent()
