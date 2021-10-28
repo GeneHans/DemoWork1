@@ -29,6 +29,7 @@ import com.example.demowork1.testbrvah.SingleTestEntity
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.NetUtil
 import com.example.demowork1.util.PathUtil
+import com.example.singlejavawork.util.ConstUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -105,6 +106,8 @@ class MainActivity : AppCompatActivity() {
                     startActivity(intent)
                 }
                 ITEM_ANIM -> {
+//                    ARouter.getInstance().build(com.example.singlework.util.ConstUtil.SingleMainActivityPath).navigation()
+                    ARouter.getInstance().build(com.example.singlejavawork.util.ConstUtil.MainActivityPath).navigation()
                     ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
                 }
                 ITEM_PAGE_LIST ->{

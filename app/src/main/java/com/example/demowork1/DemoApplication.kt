@@ -20,11 +20,11 @@ class DemoApplication : Application() {
     override fun onCreate() {
         super.onCreate()
         mContext = this
-        ARouter.init(this)
         if(BuildConfig.DEBUG) {
-//            ARouter.openLog()
-//            ARouter.openDebug()
+            ARouter.openLog()
+            ARouter.openDebug()
         }
+        ARouter.init(this)
         var crashHandler = CrashHandler.newInstance(this)
         //DbFlow初始化
         FlowManager.init(this)

@@ -127,6 +127,12 @@ dependencies {
     implementation project(path: ':annotationTest')
     annotationProcessor project(':annotationTest')
 
+    implementation project(path: ':singleJavaWork')
+    annotationProcessor project(':singleJavaWork')
+
+    implementation project(path: ':singlework')
+    annotationProcessor project(':singlework')
+
     implementation 'com.alibaba:arouter-api:1.5.2'
     kapt 'com.alibaba:arouter-compiler:1.5.2'
     annotationProcessor 'com.alibaba:arouter-compiler:1.5.2'

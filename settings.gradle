@@ -1,3 +1,5 @@
+include ':singleJavaWork'
+include ':singlework'
 include ':annotationTest'
 include ':shapeTest'
 include ':app'
