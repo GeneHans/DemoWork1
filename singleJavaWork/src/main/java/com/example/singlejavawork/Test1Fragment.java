@@ -12,21 +12,15 @@ import androidx.annotation.Nullable;
 import com.example.singlejavawork.base.BaseFragment;
 import com.example.singlejavawork.databinding.FragmentTest1Binding;
 
-public class Test1Fragment extends BaseFragment {
-
-    private FragmentTest1Binding binding;
+public class Test1Fragment extends BaseFragment<FragmentTest1Binding> {
 
     public Test1Fragment() {
         // Required empty public constructor
     }
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container,
-                             Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        binding = FragmentTest1Binding.inflate(inflater, container, false);
-        View view = binding.getRoot();
-        return view;
+    protected FragmentTest1Binding initViewBinding(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
+        return FragmentTest1Binding.inflate(inflater,container,false);
     }
 
     @Override
@@ -39,11 +33,4 @@ public class Test1Fragment extends BaseFragment {
             }
         });
     }
-
-    @Override
-    public void onDestroyView() {
-        super.onDestroyView();
-        binding = null;
-    }
-
 }

@@ -110,7 +110,7 @@ class MainActivity : AppCompatActivity() {
                 ITEM_ANIM -> {
 //                    ARouter.getInstance().build(com.example.singlework.util.ConstUtil.SingleMainActivityPath).navigation()
                     ARouter.getInstance().build(com.example.singlejavawork.util.ConstUtil.MainActivityPath).navigation()
-                    ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
+//                    ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
                 }
                 ITEM_PAGE_LIST ->{
                     var intent = Intent()

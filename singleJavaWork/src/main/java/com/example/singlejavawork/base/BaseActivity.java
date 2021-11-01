@@ -6,19 +6,14 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewbinding.ViewBinding;
 
-import com.dylanc.viewbinding.ViewBindingUtil;
-
-public class BaseActivity<VB extends ViewBinding> extends AppCompatActivity {
-    private VB binding;
+public abstract class BaseActivity<VB extends ViewBinding> extends AppCompatActivity {
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        binding = ViewBindingUtil.inflateWithGeneric(this,getLayoutInflater());
+        VB binding = getBinding();
         setContentView(binding.getRoot());
     }
 
-    public VB getBinding(){
-        return binding;
-    }
+     abstract protected VB getBinding();
 }
