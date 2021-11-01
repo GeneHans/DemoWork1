@@ -3,7 +3,8 @@
     package="com.example.singlework">
 
     <application>
-        <activity android:name=".SingleMainActivity"></activity>
+        <activity android:name=".SingleMainActivity"/>
+        <activity android:name="com.example.singlework.qrcode.QRScannerActivity"/>
     </application>
 
 </manifest>

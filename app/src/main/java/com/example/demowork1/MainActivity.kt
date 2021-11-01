@@ -55,8 +55,10 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_NOTIFICATION = 9
     //摇一摇demo
     private val ITEM_SENSOR = 10
+    //二维码扫描
+    private val ITEM_QR_CODE = 11
     //简单内容练习
-    private val ITEM_VIEW_DEMO = 11
+    private val ITEM_VIEW_DEMO = 12
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -130,6 +132,9 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this,SensorTestActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_QR_CODE ->{
+                    ARouter.getInstance().build(com.example.singlework.util.ConstUtil.QRCodeActivityPath).navigation()
+                }
                 ITEM_VIEW_DEMO ->{
                     var intent = Intent()
                     intent.setClass(this,ViewDemoActivity::class.java)
@@ -158,6 +163,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("android注解学习", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("android通知学习", getString(R.string.notification_test_content)))
         listData.add(SingleTestEntity("摇一摇Demo", getString(R.string.annotation_content)))
+        listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
         listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
         return listData
     }
