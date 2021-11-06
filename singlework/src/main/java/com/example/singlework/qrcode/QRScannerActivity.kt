@@ -17,21 +17,20 @@ import com.king.zxing.camera.CameraManager
 import com.king.zxing.camera.FrontLightMode
 
 @Route(path = ConstUtil.QRCodeActivityPath)
-class QRScannerActivity : BaseActivity(),OnCaptureCallback {
-    private lateinit var viewBinding: ActivityQRScannerBinding
+class QRScannerActivity : BaseActivity<ActivityQRScannerBinding>(), OnCaptureCallback {
+    override var viewBinding: ActivityQRScannerBinding = ActivityQRScannerBinding.inflate(layoutInflater)
+
     private lateinit var captureHelper: CaptureHelper
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivityQRScannerBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
         initQRConfig()
         checkPermission()
     }
 
     override fun onResultCallback(result: String?): Boolean {
         //todo 处理结果
-        Toast.makeText(mActivity,result,Toast.LENGTH_SHORT).show()
+        Toast.makeText(mActivity, result, Toast.LENGTH_SHORT).show()
         return true
     }
 
@@ -54,20 +53,20 @@ class QRScannerActivity : BaseActivity(),OnCaptureCallback {
     /**
      * 初始化QRScanner配置
      */
-    private fun initQRConfig(){
+    private fun initQRConfig() {
         captureHelper = CaptureHelper(this, viewBinding.svPreview, viewBinding.vfv, null)
         captureHelper.setOnCaptureCallback(this)
         captureHelper.decodeFormats(DecodeFormatManager.QR_CODE_FORMATS)
-            .supportAutoZoom(true) // 自动缩放
-            .fullScreenScan(true) // 全屏扫码识别
-            .supportLuminanceInvert(true) // 是否支持识别反色码，黑白颜色反转，开启提高识别效率
-            .continuousScan(true) // 开启连续扫描
-            .autoRestartPreviewAndDecode(false) // 连续扫描开启情况下，取消自动继续扫描，自己处理完后调用restartPreviewAndDecode()
-            .playBeep(true) // 播放beep声音
-            .supportZoom(true) // 支持双指缩放
-            .frontLightMode(FrontLightMode.OFF) // 默认关闭闪光灯
-            .setOnCaptureCallback(this) // 设置回调
-            .onCreate()
+                .supportAutoZoom(true) // 自动缩放
+                .fullScreenScan(true) // 全屏扫码识别
+                .supportLuminanceInvert(true) // 是否支持识别反色码，黑白颜色反转，开启提高识别效率
+                .continuousScan(true) // 开启连续扫描
+                .autoRestartPreviewAndDecode(false) // 连续扫描开启情况下，取消自动继续扫描，自己处理完后调用restartPreviewAndDecode()
+                .playBeep(true) // 播放beep声音
+                .supportZoom(true) // 支持双指缩放
+                .frontLightMode(FrontLightMode.OFF) // 默认关闭闪光灯
+                .setOnCaptureCallback(this) // 设置回调
+                .onCreate()
         val cameraManager: CameraManager = captureHelper.cameraManager
         cameraManager.setOnTorchListener { torch: Boolean ->
             viewBinding.tvTorch.isSelected = torch
@@ -75,7 +74,7 @@ class QRScannerActivity : BaseActivity(),OnCaptureCallback {
         }
         viewBinding.tvTorch.setOnClickListener(View.OnClickListener {
             cameraManager.setTorch(
-                !viewBinding.tvTorch.isSelected
+                    !viewBinding.tvTorch.isSelected
             )
         })
         viewBinding.tvTorch.post(Runnable { this.updateScanFrameLocation() })
@@ -97,14 +96,14 @@ class QRScannerActivity : BaseActivity(),OnCaptureCallback {
         if (!checkPermissions(arrayOf(Manifest.permission.CAMERA))) {
             //弹起授权弹窗
             baseRequestPermissions(
-                arrayOf(Manifest.permission.CAMERA),
-                object : PermissionCallback() {
-                    override fun onPermissionGranted(permissions: Array<String?>?) {}
-                    override fun onPermissionDenied(permissions: Array<String?>?) {
-                        Toast.makeText(mActivity,"权限被拒绝",Toast.LENGTH_SHORT).show()
-                        finish()
-                    }
-                })
+                    arrayOf(Manifest.permission.CAMERA),
+                    object : PermissionCallback() {
+                        override fun onPermissionGranted(permissions: Array<String?>?) {}
+                        override fun onPermissionDenied(permissions: Array<String?>?) {
+                            Toast.makeText(mActivity, "权限被拒绝", Toast.LENGTH_SHORT).show()
+                            finish()
+                        }
+                    })
         }
     }
 }

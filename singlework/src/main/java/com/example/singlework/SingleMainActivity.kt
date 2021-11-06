@@ -8,17 +8,18 @@ import com.example.singlework.databinding.ActivitySingleMainBinding
 import com.example.singlework.util.ConstUtil
 
 @Route(path = ConstUtil.SingleMainActivityPath)
-class SingleMainActivity : BaseActivity() {
-    private lateinit var viewBinding: ActivitySingleMainBinding
+class SingleMainActivity : BaseActivity<ActivitySingleMainBinding>() {
+
+    override var viewBinding: ActivitySingleMainBinding = ActivitySingleMainBinding.inflate(layoutInflater)
+
     private var count = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        viewBinding = ActivitySingleMainBinding.inflate(layoutInflater)
-        setContentView(viewBinding.root)
         viewBinding.textView.setOnClickListener {
             Toast.makeText(mActivity, "$count", Toast.LENGTH_SHORT).show()
             count++
         }
     }
+
 }

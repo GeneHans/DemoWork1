@@ -1,34 +1,20 @@
 package com.example.singlework.base
 
-import android.app.Activity
-import android.app.Dialog
 import android.content.pm.PackageManager
 import android.os.Build
 import android.os.Bundle
-import android.view.LayoutInflater
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.viewbinding.ViewBinding
 
-open class BaseActivity : AppCompatActivity() {
-    lateinit var mActivity: BaseActivity
-
-    inline fun <reified VB : ViewBinding> Activity.inflate() = lazy {
-        inflateBinding<VB>(layoutInflater).apply { setContentView(root) }
-    }
-
-    inline fun <reified VB : ViewBinding> Dialog.inflate() = lazy {
-        inflateBinding<VB>(layoutInflater).apply { setContentView(root) }
-    }
-
-    @Suppress("UNCHECKED_CAST")
-    inline fun <reified VB : ViewBinding> inflateBinding(layoutInflater: LayoutInflater) =
-        VB::class.java.getMethod("inflate", LayoutInflater::class.java)
-            .invoke(null, layoutInflater) as VB
+abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
+    lateinit var mActivity: BaseActivity<VB>
+    abstract var viewBinding: VB
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(viewBinding.root)
         mActivity = this
     }
 
@@ -36,9 +22,9 @@ open class BaseActivity : AppCompatActivity() {
     open fun checkPermissions(permissions: Array<String?>): Boolean {
         for (permission in permissions) {
             if (ContextCompat.checkSelfPermission(
-                    this,
-                    permission!!
-                ) != PackageManager.PERMISSION_GRANTED
+                            this,
+                            permission!!
+                    ) != PackageManager.PERMISSION_GRANTED
             ) {
                 return false
             }
@@ -59,9 +45,9 @@ open class BaseActivity : AppCompatActivity() {
         permissionCallback = callback
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M && !checkPermissions(perms!!)) {
             ActivityCompat.requestPermissions(
-                this,
-                perms,
-                REQ_CODE_PERMISSION
+                    this,
+                    perms,
+                    REQ_CODE_PERMISSION
             )
         } else {
             permissionCallback?.onPermissionGranted(perms)
@@ -73,15 +59,15 @@ open class BaseActivity : AppCompatActivity() {
     }
 
     override fun onRequestPermissionsResult(
-        requestCode: Int,
-        permissions: Array<out String>,
-        grantResults: IntArray
+            requestCode: Int,
+            permissions: Array<out String>,
+            grantResults: IntArray
     ) {
-        when(requestCode){
+        when (requestCode) {
             REQ_CODE_PERMISSION -> {
-                
+
             }
-            else ->{
+            else -> {
 
             }
         }
