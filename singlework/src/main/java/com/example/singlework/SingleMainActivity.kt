@@ -2,6 +2,7 @@ package com.example.singlework
 
 import android.os.Bundle
 import android.widget.Toast
+import androidx.lifecycle.Lifecycle
 import com.alibaba.android.arouter.facade.annotation.Route
 import com.example.singlework.base.BaseActivity
 import com.example.singlework.databinding.ActivitySingleMainBinding
@@ -16,6 +17,10 @@ class SingleMainActivity : BaseActivity<ActivitySingleMainBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        lifecycle.addObserver(SingleMainLifeCycle())
+        if(lifecycle.currentState.isAtLeast(Lifecycle.State.RESUMED)){
+
+        }
         viewBinding.textView.setOnClickListener {
             Toast.makeText(mActivity, "$count", Toast.LENGTH_SHORT).show()
             count++

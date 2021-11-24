@@ -154,7 +154,7 @@ class MainActivity : AppCompatActivity() {
         var listData = ArrayList<SingleTestEntity>()
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
-        listData.add(SingleTestEntity("litePal数据库", getString(R.string.litepal_content)))
+        listData.add(SingleTestEntity("litePal数据库练习", getString(R.string.litepal_content)))
         listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
