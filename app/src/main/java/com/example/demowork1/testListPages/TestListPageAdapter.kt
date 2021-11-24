@@ -9,7 +9,7 @@ import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.example.demowork1.R
-import com.example.demowork1.room.TestListPageEntity
+import com.example.demowork1.database.room.TestListPageEntity
 
 class TestListPageAdapter :
         PagingDataAdapter<TestListPageEntity, TestListPageAdapter.TestViewHolder1>(TestItemCallBack()) {
@@ -40,15 +40,15 @@ class TestListPageAdapter :
 
 class TestItemCallBack : DiffUtil.ItemCallback<TestListPageEntity>() {
     override fun areItemsTheSame(
-            oldItem: TestListPageEntity,
-            newItem: TestListPageEntity
+        oldItem: TestListPageEntity,
+        newItem: TestListPageEntity
     ): Boolean {
         return oldItem.id == newItem.id
     }
 
     override fun areContentsTheSame(
-            oldItem: TestListPageEntity,
-            newItem: TestListPageEntity
+        oldItem: TestListPageEntity,
+        newItem: TestListPageEntity
     ): Boolean {
         return oldItem.title == newItem.title && oldItem.content == newItem.content
     }

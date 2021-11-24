@@ -16,7 +16,8 @@ import com.example.demowork1.database.dbflow.DBFlowTestActivity
 import com.example.demowork1.database.litepal.LitePalActivity
 import com.example.demowork1.database.sqlite.SQLiteTestActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
-import com.example.demowork1.manager.PermissionManager
+import com.example.common.util.PermissionManager
+import com.example.demowork1.coordinatorlayout.TestCoorActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.notification.NotificationActivity
 import com.example.demowork1.sensor.SensorTestActivity
@@ -28,8 +29,6 @@ import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.NetUtil
-import com.example.demowork1.util.PathUtil
-import com.example.singlejavawork.util.ConstUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -57,8 +56,10 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_SENSOR = 10
     //二维码扫描
     private val ITEM_QR_CODE = 11
+    //CoordinatorLayout练习
+    private val ITEM_COORDINATORLAYOUT = 12
     //简单内容练习
-    private val ITEM_VIEW_DEMO = 12
+    private val ITEM_VIEW_DEMO = 13
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -135,6 +136,11 @@ class MainActivity : AppCompatActivity() {
                 ITEM_QR_CODE ->{
                     ARouter.getInstance().build(com.example.singlework.util.ConstUtil.QRCodeActivityPath).navigation()
                 }
+                ITEM_COORDINATORLAYOUT ->{
+                    var intent = Intent()
+                    intent.setClass(this, TestCoorActivity::class.java)
+                    startActivity(intent)
+                }
                 ITEM_VIEW_DEMO ->{
                     var intent = Intent()
                     intent.setClass(this,ViewDemoActivity::class.java)
@@ -164,6 +170,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("android通知学习", getString(R.string.notification_test_content)))
         listData.add(SingleTestEntity("摇一摇Demo", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
+        listData.add(SingleTestEntity("CoordinatorLayout", getString(R.string.coordinator_content)))
         listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
         return listData
     }

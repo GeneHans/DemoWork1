@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demowork1.DemoApplication
 import com.example.demowork1.R
-import com.example.demowork1.room.DemoWorkDataBase
+import com.example.demowork1.database.room.DemoWorkDataBase
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.RSACipherUtil
 

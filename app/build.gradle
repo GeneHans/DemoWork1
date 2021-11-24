@@ -47,6 +47,9 @@ android {
     dataBinding {
         enabled true
     }
+    viewBinding {
+        enabled = true
+    }
 }
 configurations {
     all*.exclude group: 'com.google.guava', module: 'listenablefuture'
@@ -82,9 +85,6 @@ dependencies {
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
     //Android SQLite操作框架
     implementation 'org.litepal.guolindev:core:3.1.1'
-
-    //MMKV
-    implementation 'com.tencent:mmkv:1.2.7'
 
     //DBFlow
     annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
@@ -132,6 +132,9 @@ dependencies {
 
     implementation project(path: ':singlework')
     annotationProcessor project(':singlework')
+
+    implementation project(path: ':common')
+    annotationProcessor project(':common')
 
     implementation 'com.alibaba:arouter-api:1.5.2'
     kapt 'com.alibaba:arouter-compiler:1.5.2'

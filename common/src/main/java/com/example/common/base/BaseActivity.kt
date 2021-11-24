@@ -10,10 +10,12 @@ import androidx.viewbinding.ViewBinding
 
 abstract class BaseActivity<VB : ViewBinding> : AppCompatActivity() {
     lateinit var mActivity: BaseActivity<VB>
-    abstract var viewBinding: VB
+    lateinit var viewBinding: VB
+    abstract fun initViewBinding()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        initViewBinding()
         setContentView(viewBinding.root)
         mActivity = this
     }

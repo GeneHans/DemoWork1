@@ -1,16 +1,25 @@
-package com.example.demowork1.manager
+package com.example.common.util
 
+import android.content.Context
 import android.content.Context.MODE_PRIVATE
 import android.content.SharedPreferences
-import com.example.demowork1.DemoApplication
+import androidx.annotation.NonNull
 import com.tencent.mmkv.MMKV
 
+/**
+ * SharedPreference操作类
+ * 使用了MMKV库
+ */
+class SPManager(@NonNull var context: Context) {
+    private val SP_KEY = "demoWorkSP"
 
-class SPManager {
-    val SP_KEY = "demoWorkSP"
+    init {
+        //MMKV初始化
+        MMKV.initialize(context)
+    }
 
     private fun getSP(): SharedPreferences? {
-        return DemoApplication.mContext?.getSharedPreferences(SP_KEY, MODE_PRIVATE)
+        return context.getSharedPreferences(SP_KEY, MODE_PRIVATE)
     }
 
     private fun getMMKV(): MMKV? {
@@ -52,11 +61,13 @@ class SPManager {
     /**
      * 清除所有缓存
      */
-    private fun clear() {
+    fun clearAll() {
         getSP()?.edit()?.clear()?.apply()
     }
 
     companion object {
-        val instance by lazy { SPManager() }
+        fun getInstance(context: Context): SPManager {
+            return SPManager(context)
+        }
     }
 }

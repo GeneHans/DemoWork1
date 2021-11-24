@@ -1,4 +1,4 @@
-package com.example.demowork1.manager
+package com.example.common.util
 
 import android.Manifest
 import android.app.Activity
@@ -11,7 +11,6 @@ import android.os.Build
 import android.os.Process
 import android.provider.Settings
 import androidx.core.app.ActivityCompat
-import com.example.demowork1.util.LogUtil
 import java.lang.reflect.Field
 import java.lang.reflect.Method
 
@@ -67,7 +66,7 @@ class PermissionManager(var mActivity: Activity) {
                 //有权限
             }
         } else {
-            LogUtil.instance.toast("低于Android8.0，可以直接安装", mActivity)
+            LogUtil.toast("低于Android8.0，可以直接安装", mActivity)
             //其他android版本，可以直接执行安装逻辑；
         }
     }

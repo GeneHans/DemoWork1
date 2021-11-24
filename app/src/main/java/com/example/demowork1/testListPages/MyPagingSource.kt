@@ -3,8 +3,8 @@ package com.example.demowork1.testListPages
 import androidx.paging.PagingSource
 import androidx.paging.PagingState
 import com.example.demowork1.DemoApplication
-import com.example.demowork1.room.DemoWorkDataBase
-import com.example.demowork1.room.TestListPageEntity
+import com.example.demowork1.database.room.DemoWorkDataBase
+import com.example.demowork1.database.room.TestListPageEntity
 import com.example.demowork1.util.LogUtil
 
 class MyPagingSource : PagingSource<Int, TestListPageEntity>() {
@@ -20,7 +20,13 @@ class MyPagingSource : PagingSource<Int, TestListPageEntity>() {
         var data = getListData(startPosition, startPosition + loadSize)
         if (data == null) {
             LogUtil.instance.d("没有获取到数据")
-            data = arrayListOf(TestListPageEntity(1, "1", "1"))
+            data = arrayListOf(
+                TestListPageEntity(
+                    1,
+                    "1",
+                    "1"
+                )
+            )
         }
         //防止下拉刷新起始点错误
         if (startPosition < 0) {

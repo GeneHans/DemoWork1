@@ -15,8 +15,8 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.swiperefreshlayout.widget.SwipeRefreshLayout
 import com.example.demowork1.DemoApplication
 import com.example.demowork1.R
-import com.example.demowork1.room.DemoWorkDataBase
-import com.example.demowork1.room.TestListPageEntity
+import com.example.demowork1.database.room.DemoWorkDataBase
+import com.example.demowork1.database.room.TestListPageEntity
 import com.example.demowork1.util.LogUtil
 import kotlinx.coroutines.launch
 
@@ -73,7 +73,13 @@ class TestListPageActivity : AppCompatActivity() {
         btnAdd.setOnClickListener {
             Thread(Runnable {
                 DemoWorkDataBase.getInstance(DemoApplication.mContext).getTestPageDataDao()
-                        .insertTestPageData(TestListPageEntity(num, "title$num", "content$num"))
+                        .insertTestPageData(
+                            TestListPageEntity(
+                                num,
+                                "title$num",
+                                "content$num"
+                            )
+                        )
                 num++
                 LogUtil.instance.d("插入数据成功")
             }).start()
