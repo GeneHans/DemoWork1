@@ -122,8 +122,8 @@ dependencies {
     // optional - Test helpers
     testImplementation("androidx.room:room-testing:$room_version")
 
-    implementation project(path: ':shapeTest')
-    annotationProcessor project(':shapeTest')
+    implementation project(path: ':processorTest')
+    annotationProcessor project(':processorTest')
     implementation project(path: ':annotationTest')
     annotationProcessor project(':annotationTest')
 
@@ -135,6 +135,8 @@ dependencies {
 
     implementation project(path: ':common')
     annotationProcessor project(':common')
+
+    implementation project(path: ':apt_lib')
 
     implementation 'com.alibaba:arouter-api:1.5.2'
     kapt 'com.alibaba:arouter-compiler:1.5.2'

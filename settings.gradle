@@ -1,7 +1,8 @@
+include ':apt_lib'
 include ':common'
 include ':singleJavaWork'
 include ':singlework'
 include ':annotationTest'
-include ':shapeTest'
+include ':processorTest'
 include ':app'
 rootProject.name = "DemoWork1"
