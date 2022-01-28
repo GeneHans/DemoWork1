@@ -1,0 +1,10 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+
+start
+:创建proto文件;
+:文件中定义数据格式;
+:protoc处理;
+:生成Proto java class文件;
+:Module中使用;
+@enduml

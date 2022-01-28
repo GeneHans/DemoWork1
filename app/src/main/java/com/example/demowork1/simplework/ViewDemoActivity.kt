@@ -7,6 +7,7 @@ import android.os.Looper
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
 import com.example.demowork1.DemoApplication
+import com.example.demowork1.PersonProto
 import com.example.demowork1.R
 import com.example.demowork1.database.room.DemoWorkDataBase
 import com.example.demowork1.util.LogUtil
@@ -52,8 +53,13 @@ class ViewDemoActivity : AppCompatActivity() {
             }
             false
         })
+        var person1 = PersonProto.Person.newBuilder().setName("Tom")
+            .setId(111).setBoo(false).setEmail("123@123.com").setPhone("123456789")
+            .build()
         tvData.setOnClickListener {
-            mHandler.sendEmptyMessage(1)
+            var dataTemp = PersonProto.Person.parseFrom(person1.toByteArray())
+            LogUtil.instance.d(dataTemp.toString())
+//            mHandler.sendEmptyMessage(1)
         }
 
     }
