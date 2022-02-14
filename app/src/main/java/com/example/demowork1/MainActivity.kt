@@ -21,6 +21,7 @@ import com.example.demowork1.coordinatorlayout.TestCoorActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.notification.NotificationActivity
 import com.example.demowork1.sensor.SensorTestActivity
+import com.example.demowork1.service.ServiceActivity
 import com.example.demowork1.simplework.ViewDemoActivity
 import com.example.demowork1.testListPages.TestListPageActivity
 import com.example.demowork1.testbrvah.MultiTestAdapter
@@ -60,6 +61,8 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_COORDINATORLAYOUT = 12
     //简单内容练习
     private val ITEM_VIEW_DEMO = 13
+    //Service
+    private val ITEM_SERVICE = 14
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -146,6 +149,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this,ViewDemoActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_SERVICE -> {
+                    var intent = Intent()
+                    intent.setClass(this, ServiceActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.instance.d("当前位置：$position")
                 }
@@ -172,6 +180,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
         listData.add(SingleTestEntity("CoordinatorLayout", getString(R.string.coordinator_content)))
         listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
+        listData.add(SingleTestEntity("Service练习", getString(R.string.annotation_content)))
         return listData
     }
 

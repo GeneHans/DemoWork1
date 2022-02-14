@@ -10,6 +10,7 @@
     <string name="list_page_content">android列表分页显示</string>
     <string name="notification_test_content">Android通知学习</string>
     <string name="annotation_content">简单内容练习</string>
+    <string name="service_content">Service练习</string>
     <string name="qr_code_content">二维码扫描</string>
     <string name="coordinator_content">CoordinatorLayout</string>
     <string name="sensor_content">摇一摇Demo</string>
