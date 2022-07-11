@@ -35,11 +35,11 @@ class MultiTestAdapter(listData: List<MultiTestEntity>) :
                 helper?.setText(R.id.text2_item_test, item.textData)
                 helper?.setText(R.id.btn2_item_test,item.btnTextData)
                 helper?.getView<Button>(R.id.btn2_item_test)?.setOnClickListener {
-                    LogUtil.instance.d("点击了样式2里的按钮" + helper.layoutPosition)
+                    LogUtil.d("点击了样式2里的按钮" + helper.layoutPosition)
                 }
             }
             else -> {
-                LogUtil.instance.d("错误类型")
+                LogUtil.d("错误类型")
             }
         }
     }

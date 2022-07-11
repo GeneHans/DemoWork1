@@ -57,8 +57,8 @@ class RSACipherUtil {
         var publicEncoded = publicKey?.encoded
         var publicKey64 = Base64.encodeToString(publicEncoded, Base64.NO_WRAP)
         var privateKey64 = Base64.encodeToString(privateEncoded, Base64.NO_WRAP)
-        LogUtil.instance.d("公钥：" + publicKey64)
-        LogUtil.instance.d("私钥：" + privateKey64)
+        LogUtil.d("公钥：" + publicKey64)
+        LogUtil.d("私钥：" + privateKey64)
         publicKeyString = publicKey64
         privateKeyString = privateKey64
     }

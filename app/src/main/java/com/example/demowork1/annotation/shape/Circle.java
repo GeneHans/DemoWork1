@@ -7,6 +7,6 @@ import com.example.demowork1.util.LogUtil;
 public class Circle implements IShape {
     @Override
     public void draw() {
-        LogUtil.Companion.getInstance().d("这是一个圆形");
+        LogUtil.INSTANCE.d("这是一个圆形");
     }
 }

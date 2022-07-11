@@ -57,10 +57,8 @@ class TestCoorActivity : BaseActivity<ActivityTestCoorBinding>() {
         var listData = ArrayList<SingleTestEntity>()
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
-        listData.add(SingleTestEntity("litePal数据库练习", getString(R.string.litepal_content)))
         listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
-        listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
         listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
         listData.add(SingleTestEntity("android注解学习", getString(R.string.annotation_content)))
@@ -68,7 +66,6 @@ class TestCoorActivity : BaseActivity<ActivityTestCoorBinding>() {
         listData.add(SingleTestEntity("摇一摇Demo", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
         listData.add(SingleTestEntity("CoordinatorLayout", getString(R.string.coordinator_content)))
-        listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
         return listData
     }
 

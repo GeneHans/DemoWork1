@@ -19,7 +19,7 @@ class MyPagingSource : PagingSource<Int, TestListPageEntity>() {
         // 加载的数据
         var data = getListData(startPosition, startPosition + loadSize)
         if (data == null) {
-            LogUtil.instance.d("没有获取到数据")
+            LogUtil.d("没有获取到数据")
             data = arrayListOf(
                 TestListPageEntity(
                     1,
@@ -32,7 +32,7 @@ class MyPagingSource : PagingSource<Int, TestListPageEntity>() {
         if (startPosition < 0) {
             startPosition = 0
         }
-        LogUtil.instance.d("startPosition    $startPosition     loadSize  $loadSize     ${data.size}")
+        LogUtil.d("startPosition    $startPosition     loadSize  $loadSize     ${data.size}")
         return LoadResult.Page(
                 data,
                 // 往上加载的Key ,如果不可以往上加载就null

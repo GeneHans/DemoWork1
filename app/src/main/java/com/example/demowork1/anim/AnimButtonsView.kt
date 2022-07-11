@@ -50,7 +50,7 @@ class AnimButtonsView @JvmOverloads constructor(
             if (animationType == FLASH_ANIMATION) {
                 setFlashXMLAnim(view)
             } else {
-                LogUtil.instance.d("无xml动画")
+                LogUtil.d("无xml动画")
             }
         }
         btnAlpha?.setOnClickListener {
@@ -62,7 +62,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     setAlphaProAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
 
@@ -76,7 +76,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     setScaleProAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
 
@@ -90,7 +90,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     setTranProAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
 
@@ -104,7 +104,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     setRotationProAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
         }
@@ -117,7 +117,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     startSetProAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
         }
@@ -130,7 +130,7 @@ class AnimButtonsView @JvmOverloads constructor(
                     startPropertyValueAnimation(view)
                 }
                 else -> {
-                    LogUtil.instance.d("没有找到动画类型")
+                    LogUtil.d("没有找到动画类型")
                 }
             }
         }
@@ -233,7 +233,7 @@ class AnimButtonsView @JvmOverloads constructor(
 
         anim.addUpdateListener {
             val currentValue = it.animatedValue
-            LogUtil.instance.d("current value is $currentValue")
+            LogUtil.d("current value is $currentValue")
         }
         anim.start()
     }

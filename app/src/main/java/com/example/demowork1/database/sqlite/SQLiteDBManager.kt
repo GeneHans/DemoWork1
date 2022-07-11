@@ -34,7 +34,7 @@ class SQLiteDBManager(var context: Context) {
         sqLiteDB?.beginTransaction() ?: return
         try {
             if (checkExistData(person.id)) {
-                LogUtil.instance.toast("数据已经存在", context)
+                LogUtil.toast("数据已经存在", context)
             } else {
                 var values = ContentValues()
                 values.put(TablePerson.ID_COLUMN, person.id)
@@ -45,7 +45,7 @@ class SQLiteDBManager(var context: Context) {
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("插入数据失败")
+            LogUtil.d("插入数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -60,7 +60,7 @@ class SQLiteDBManager(var context: Context) {
         sqLiteDB?.beginTransaction() ?: return
         try {
             if (checkExistData(person.id)) {
-                LogUtil.instance.toast("数据已经存在", context)
+                LogUtil.toast("数据已经存在", context)
             } else {
                 var insertSql =
                     "insert into " + DataBaseHelper.TEST_TABLE_NAME + " (" + TablePerson.ID_COLUMN + " , " +
@@ -70,7 +70,7 @@ class SQLiteDBManager(var context: Context) {
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("插入数据失败")
+            LogUtil.d("插入数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -101,12 +101,12 @@ class SQLiteDBManager(var context: Context) {
                 // 参数4：WHERE选择语句的参数(String[]), 逐个替换 WHERE表达式中 的“？”占位符;
 
             } else {
-                LogUtil.instance.toast("数据不存在", context)
+                LogUtil.toast("数据不存在", context)
             }
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("更新数据失败")
+            LogUtil.d("更新数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -127,12 +127,12 @@ class SQLiteDBManager(var context: Context) {
                             " = '" + person.name + "' where " + TablePerson.ID_COLUMN + " = " + person.id
                 sqLiteDB?.execSQL(updateSql)
             } else {
-                LogUtil.instance.toast("数据不存在", context)
+                LogUtil.toast("数据不存在", context)
             }
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("更新数据失败")
+            LogUtil.d("更新数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -151,12 +151,12 @@ class SQLiteDBManager(var context: Context) {
                     arrayOf(id.toString())
                 )
             } else {
-                LogUtil.instance.toast("数据不存在", context)
+                LogUtil.toast("数据不存在", context)
             }
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("更新数据失败")
+            LogUtil.d("更新数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -176,12 +176,12 @@ class SQLiteDBManager(var context: Context) {
                             TablePerson.ID_COLUMN + " = " + id
                 sqLiteDB?.execSQL(deleteSql)
             } else {
-                LogUtil.instance.toast("数据不存在", context)
+                LogUtil.toast("数据不存在", context)
             }
             sqLiteDB?.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("更新数据失败")
+            LogUtil.d("更新数据失败")
         } finally {
             sqLiteDB?.endTransaction()
         }
@@ -219,7 +219,7 @@ class SQLiteDBManager(var context: Context) {
         while (!result.isAfterLast) {
             var mId: Int = result.getInt(0)
             var mName: String = result.getString(1)
-            LogUtil.instance.d("id=$mId   name$mName")
+            LogUtil.d("id=$mId   name$mName")
             // do something useful with these
             result.moveToNext()
         }
@@ -242,7 +242,7 @@ class SQLiteDBManager(var context: Context) {
         while (!result.isAfterLast) {
             var mId: Int = result.getInt(0)
             var mName: String = result.getString(1)
-            LogUtil.instance.d("id=$mId   name$mName")
+            LogUtil.d("id=$mId   name$mName")
             // do something useful with these
             result.moveToNext()
         }

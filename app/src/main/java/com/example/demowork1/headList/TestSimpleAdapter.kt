@@ -28,7 +28,7 @@ class TestSimpleAdapter(arrayData: ArrayList<TestData>) : RecyclerView.Adapter<R
         if (holder is TestViewHolder1) {
             holder.textView?.text = listData[position].textMessage
             holder.btnTest?.setOnClickListener {
-                LogUtil.instance.d("点击了第 $position 个按钮")
+                LogUtil.d("点击了第 $position 个按钮")
             }
         }
     }

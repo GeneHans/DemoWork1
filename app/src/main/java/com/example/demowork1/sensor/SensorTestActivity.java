@@ -65,7 +65,7 @@ public class SensorTestActivity extends AppCompatActivity implements ISensorCall
 
     @Override
     public void action() {
-        LogUtil.Companion.getInstance().toast("摇一摇", DemoApplication.Companion.getMContext());
+        LogUtil.INSTANCE.toast("摇一摇", DemoApplication.Companion.getMContext());
         Intent intent = new Intent();
         intent.setClass(this, TestAnimActivity.class);
         startActivity(intent);

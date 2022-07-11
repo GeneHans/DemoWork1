@@ -30,7 +30,7 @@ class PointSinEvaluator : TypeEvaluator<Any?> {
 class TestTimeInterpolator : TimeInterpolator {
     override fun getInterpolation(input: Float): Float {
         //先慢后快
-        LogUtil.instance.d(input.toString())
+        LogUtil.d(input.toString())
         return input * input
     }
 }

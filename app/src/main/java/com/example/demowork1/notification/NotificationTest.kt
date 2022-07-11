@@ -158,7 +158,11 @@ class NotificationTest(var context: Context) {
         notificationManagerCompat.notify(id, notification)
     }
 
+    /**
+     * 创建带有进度条的通知
+     */
     fun createProgressNotification(id: Int) {
+        setNotificationChannel()
         val builder = NotificationCompat.Builder(context, CHANNEL_ID).apply {
             setContentTitle("Picture Download")
             setContentText("Download in progress")
@@ -176,7 +180,7 @@ class NotificationTest(var context: Context) {
             var timerTask = object : TimerTask() {
                 override fun run() {
                     var data = 10 * count
-                    LogUtil.instance.d(data.toString())
+                    LogUtil.d(data.toString())
                     count++
                     if (data > 100) {
                         timer.cancel()

@@ -16,9 +16,9 @@ class NotificationReceiver: BroadcastReceiver() {
         if(intent == null || context == null)
             return
         var content = intent.extras?.getInt(Notification.EXTRA_NOTIFICATION_ID)
-        LogUtil.instance.d(content?.toString()?:"no data")
+        LogUtil.d(content?.toString()?:"no data")
         var data = getMessageText(intent)
-        LogUtil.instance.d(data.toString())
+        LogUtil.d(data.toString())
 
         val repliedNotification =NotificationCompat.Builder(context, CHANNEL_ID)
             .setSmallIcon(R.drawable.arrow_right)

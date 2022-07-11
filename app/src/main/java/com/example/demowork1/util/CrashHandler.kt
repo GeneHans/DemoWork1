@@ -27,7 +27,7 @@ class CrashHandler(var mContext: Context) : Thread.UncaughtExceptionHandler {
 
     override fun uncaughtException(t: Thread, e: Throwable) {
 //        handleException(e)
-        LogUtil.instance.d(t.name + "   " + e.message)
+        LogUtil.d(t.name + "   " + e.message)
         //退出程序
         Process.killProcess(Process.myPid())
         exitProcess(1)

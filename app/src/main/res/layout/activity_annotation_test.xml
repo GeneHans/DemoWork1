@@ -20,4 +20,12 @@
             android:layout_height="wrap_content" />
     </com.google.android.material.textfield.TextInputLayout>
 
+
+    <Button
+        android:id="@+id/btn_adb_cmd"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/dp_10"
+        android:text="adb 指令测试" />
+
 </LinearLayout>

@@ -24,7 +24,7 @@ class DataBaseHelper(
 
     override fun onUpgrade(db: SQLiteDatabase?, oldVersion: Int, newVersion: Int) {
         // 使用 SQL的ALTER语句
-        LogUtil.instance.d("onUpgrade，newVersion is $newVersion")
+        LogUtil.d("onUpgrade，newVersion is $newVersion")
         if (db == null)
             return
         db.beginTransaction()
@@ -34,7 +34,7 @@ class DataBaseHelper(
                     2 -> {
                         var sql =
                             "alter table $TEST_TABLE_NAME add other varchar(64)"
-                        LogUtil.instance.d(sql)
+                        LogUtil.d(sql)
                         db?.execSQL(sql)
                     }
                     3 -> {
@@ -46,7 +46,7 @@ class DataBaseHelper(
             db.setTransactionSuccessful()
         } catch (e: Exception) {
             e.printStackTrace()
-            LogUtil.instance.d("Monicat:SQLiteDatabase upgrade failed.")
+            LogUtil.d("Monicat:SQLiteDatabase upgrade failed.")
         } finally {
             db.endTransaction()
         }

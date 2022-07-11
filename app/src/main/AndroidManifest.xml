@@ -37,14 +37,11 @@
             android:label="测试" />
         <activity android:name=".sensor.SensorTestActivity" />
         <activity android:name=".notification.NotificationActivity" />
-        <activity android:name=".simplework.ViewDemoActivity" />
         <activity android:name=".annotation.AnnotationTestActivity" />
         <activity android:name=".testListPages.TestListPageActivity" />
         <activity android:name=".anim.TestAnimActivity" />
-        <activity android:name=".database.dbflow.DBFlowTestActivity" />
         <activity android:name=".database.sqlite.SQLiteTestActivity" />
         <activity android:name=".constraintlayout.TestConstraintLayoutActivity" />
-        <activity android:name=".database.litepal.LitePalActivity" />
         <activity android:name=".mvvm.TestMvvmActivity" />
         <activity android:name=".headList.RecyclerViewTestActivity" />
         <activity android:name=".MainActivity">

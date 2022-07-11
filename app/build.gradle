@@ -96,16 +96,6 @@ dependencies {
 
     //数据解析
     implementation 'com.squareup.retrofit2:converter-gson:2.6.2'
-    //Android SQLite操作框架
-    implementation 'org.litepal.guolindev:core:3.1.1'
-
-    //DBFlow
-    annotationProcessor "com.github.Raizlabs.DBFlow:dbflow-processor:$dbflow_version"
-    implementation "com.github.Raizlabs.DBFlow:dbflow-core:${dbflow_version}"
-    implementation "com.github.Raizlabs.DBFlow:dbflow:${dbflow_version}"
-// sql-cipher database encyrption (optional)
-    implementation "com.github.Raizlabs.DBFlow:dbflow-sqlcipher:${dbflow_version}"
-
 
     //Jetpack page分页库
     def paging_version = "3.0.0"

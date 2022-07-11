@@ -81,14 +81,14 @@ class TestListPageActivity : AppCompatActivity() {
                             )
                         )
                 num++
-                LogUtil.instance.d("插入数据成功")
+                LogUtil.d("插入数据成功")
             }).start()
         }
         btnClear.setOnClickListener {
             Thread(Runnable {
                 DemoWorkDataBase.getInstance(DemoApplication.mContext).getTestPageDataDao()
                         .deleteAllData()
-                LogUtil.instance.d("删除数据成功")
+                LogUtil.d("删除数据成功")
             }).start()
         }
     }

@@ -4,12 +4,15 @@ import android.content.ComponentName
 import android.content.Context
 import android.content.Intent
 import android.content.ServiceConnection
-import android.os.Build
-import android.os.Bundle
-import android.os.IBinder
+import android.os.*
+import android.widget.TextView
 import com.example.common.base.BaseActivity
 import com.example.common.util.LogUtil
+import com.example.demowork1.DemoApplication
+import com.example.demowork1.PersonProto
+import com.example.demowork1.database.room.DemoWorkDataBase
 import com.example.demowork1.databinding.ActivityServiceBinding
+import com.example.demowork1.util.RSACipherUtil
 
 
 class ServiceActivity : BaseActivity<ActivityServiceBinding>() {
@@ -17,6 +20,22 @@ class ServiceActivity : BaseActivity<ActivityServiceBinding>() {
     private var binderService: BinderService? = null
 
     private var isBound = false
+
+    private var text = "Hello"
+    private lateinit var tvData: TextView
+    private var UIHandler = Handler(Looper.getMainLooper()){
+        when(it.what){
+            2 ->{
+                //更新UI
+                tvData.text = text
+                com.example.demowork1.util.LogUtil.toast("UI更新", DemoApplication.mContext)
+            }
+            else ->{
+
+            }
+        }
+        false
+    }
 
     private val conn: ServiceConnection = object : ServiceConnection {
         override fun onServiceConnected(name: ComponentName, binder: IBinder) {
@@ -36,6 +55,7 @@ class ServiceActivity : BaseActivity<ActivityServiceBinding>() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        tvData = viewBinding.tvHt
         viewBinding.btnOpenService.setOnClickListener {
             startService()
         }
@@ -48,6 +68,7 @@ class ServiceActivity : BaseActivity<ActivityServiceBinding>() {
         viewBinding.btnUnBinderService.setOnClickListener {
             unBinderService()
         }
+        testHandlerThread()
     }
 
     /**
@@ -85,6 +106,35 @@ class ServiceActivity : BaseActivity<ActivityServiceBinding>() {
         var intent = Intent()
         intent.setClass(this, MainService::class.java)
         stopService(intent)
+    }
+
+    private fun testHandlerThread(){
+        var data = RSACipherUtil.instance.encrypt("这是个测试")
+        var message = RSACipherUtil.instance.decrypt(data)
+        LogUtil.d(message?:"no data")
+
+        var handlerThread = HandlerThread("testHandlerThread")
+        handlerThread.start()
+        var mHandler = Handler(handlerThread.looper, Handler.Callback {
+            if(it.what == 1) {
+                //子线程中进行相应的操作
+                var data =
+                        DemoWorkDataBase.getInstance(DemoApplication.mContext).getTestPageDataDao()
+                                .queryById(0)
+                text = data?.content ?: "no data"
+                //主线程更新UI
+                UIHandler.sendEmptyMessage(2)
+            }
+            false
+        })
+        var person1 = PersonProto.Person.newBuilder().setName("Tom")
+                .setId(111).setBoo(false).setEmail("123@123.com").setPhone("123456789")
+                .build()
+        tvData.setOnClickListener {
+            var dataTemp = PersonProto.Person.parseFrom(person1.toByteArray())
+            com.example.demowork1.util.LogUtil.d(dataTemp.toString())
+            mHandler.sendEmptyMessage(1)
+        }
     }
 
     override fun initViewBinding() {

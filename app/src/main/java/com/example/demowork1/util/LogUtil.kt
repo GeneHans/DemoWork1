@@ -4,7 +4,7 @@ import android.content.Context
 import android.util.Log
 import android.widget.Toast
 
-class LogUtil {
+object LogUtil {
 
     private val TAG = "message"
 
@@ -18,10 +18,5 @@ class LogUtil {
 
     fun toast(message: String, context: Context) {
         Toast.makeText(context, message, Toast.LENGTH_SHORT).show()
-    }
-
-
-    companion object {
-        val instance: LogUtil by lazy(mode = LazyThreadSafetyMode.SYNCHRONIZED) { LogUtil() }
     }
 }

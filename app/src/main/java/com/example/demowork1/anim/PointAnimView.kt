@@ -66,7 +66,7 @@ class PointAnimView @JvmOverloads constructor(
         var animSet = AnimatorSet()
         animSet.addListener(object : AnimatorListenerAdapter() {
             override fun onAnimationStart(animation: Animator?) {
-                LogUtil.instance.d("动画开始")
+                LogUtil.d("动画开始")
             }
         })
         animSet.play(valueAnimator).with(scaleAnim).with(animColor)

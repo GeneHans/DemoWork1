@@ -10,26 +10,22 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.alibaba.android.arouter.launcher.ARouter
+import com.example.common.util.PermissionManager
 import com.example.demowork1.annotation.AnnotationTestActivity
 import com.example.demowork1.constraintlayout.TestConstraintLayoutActivity
-import com.example.demowork1.database.dbflow.DBFlowTestActivity
-import com.example.demowork1.database.litepal.LitePalActivity
+import com.example.demowork1.coordinatorlayout.TestCoorActivity
 import com.example.demowork1.database.sqlite.SQLiteTestActivity
 import com.example.demowork1.headList.RecyclerViewTestActivity
-import com.example.common.util.PermissionManager
-import com.example.demowork1.coordinatorlayout.TestCoorActivity
 import com.example.demowork1.mvvm.TestMvvmActivity
 import com.example.demowork1.notification.NotificationActivity
 import com.example.demowork1.sensor.SensorTestActivity
 import com.example.demowork1.service.ServiceActivity
-import com.example.demowork1.simplework.ViewDemoActivity
 import com.example.demowork1.testListPages.TestListPageActivity
-import com.example.demowork1.testbrvah.MultiTestAdapter
-import com.example.demowork1.testbrvah.MultiTestEntity
 import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.NetUtil
+import com.example.demowork1.util.PathUtil
 
 class MainActivity : AppCompatActivity() {
 
@@ -37,32 +33,26 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_RECYCLERVIEW = 0
     //dataBinding测试demo
     private val ITEM_MVVM = 1
-    //litePal数据库
-    private val ITEM_LITE_PAL = 2
     //ConstraintLayout
-    private val ITEM_CONSTRAINTLAYOUT = 3
+    private val ITEM_CONSTRAINTLAYOUT = 2
     //SQLite
-    private val ITEM_SQLITE = 4
-    //DBFlow
-    private val ITEM_DBFLOW = 5
+    private val ITEM_SQLITE = 3
     //Android动画
-    private val ITEM_ANIM = 6
+    private val ITEM_ANIM = 4
     //android列表分页
-    private val ITEM_PAGE_LIST = 7
+    private val ITEM_PAGE_LIST = 5
     //注解学习
-    private val ITEM_ANNOTATION = 8
+    private val ITEM_ANNOTATION = 6
     //通知练习
-    private val ITEM_NOTIFICATION = 9
+    private val ITEM_NOTIFICATION = 7
     //摇一摇demo
-    private val ITEM_SENSOR = 10
+    private val ITEM_SENSOR = 8
     //二维码扫描
-    private val ITEM_QR_CODE = 11
+    private val ITEM_QR_CODE = 9
     //CoordinatorLayout练习
-    private val ITEM_COORDINATORLAYOUT = 12
+    private val ITEM_COORDINATORLAYOUT = 10
     //简单内容练习
-    private val ITEM_VIEW_DEMO = 13
-    //Service
-    private val ITEM_SERVICE = 14
+    private val ITEM_INTENT_SERVICE = 11
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -91,11 +81,6 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, TestMvvmActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_LITE_PAL -> {
-                    var intent = Intent()
-                    intent.setClass(this, LitePalActivity::class.java)
-                    startActivity(intent)
-                }
                 ITEM_CONSTRAINTLAYOUT -> {
                     var intent = Intent()
                     intent.setClass(this, TestConstraintLayoutActivity::class.java)
@@ -106,15 +91,8 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, SQLiteTestActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_DBFLOW -> {
-                    var intent = Intent()
-                    intent.setClass(this, DBFlowTestActivity::class.java)
-                    startActivity(intent)
-                }
                 ITEM_ANIM -> {
-//                    ARouter.getInstance().build(com.example.singlework.util.ConstUtil.SingleMainActivityPath).navigation()
-                    ARouter.getInstance().build(com.example.singlejavawork.util.ConstUtil.MainActivityPath).navigation()
-//                    ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
+                    ARouter.getInstance().build( PathUtil.ITEM_ANIM).navigation()
                 }
                 ITEM_PAGE_LIST ->{
                     var intent = Intent()
@@ -144,18 +122,13 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, TestCoorActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_VIEW_DEMO ->{
-                    var intent = Intent()
-                    intent.setClass(this,ViewDemoActivity::class.java)
-                    startActivity(intent)
-                }
-                ITEM_SERVICE -> {
+                ITEM_INTENT_SERVICE ->{
                     var intent = Intent()
                     intent.setClass(this, ServiceActivity::class.java)
                     startActivity(intent)
                 }
                 else -> {
-                    LogUtil.instance.d("当前位置：$position")
+                    LogUtil.d("当前位置：$position")
                 }
             }
         }
@@ -168,10 +141,8 @@ class MainActivity : AppCompatActivity() {
         var listData = ArrayList<SingleTestEntity>()
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
-        listData.add(SingleTestEntity("litePal数据库练习", getString(R.string.litepal_content)))
         listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
-        listData.add(SingleTestEntity("DBFlow", getString(R.string.dbflow_content)))
         listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
         listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
         listData.add(SingleTestEntity("android注解学习", getString(R.string.annotation_content)))
@@ -179,42 +150,8 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("摇一摇Demo", getString(R.string.annotation_content)))
         listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
         listData.add(SingleTestEntity("CoordinatorLayout", getString(R.string.coordinator_content)))
-        listData.add(SingleTestEntity("简单内容练习", getString(R.string.annotation_content)))
-        listData.add(SingleTestEntity("Service练习", getString(R.string.annotation_content)))
+        listData.add(SingleTestEntity("IntentService", getString(R.string.intent_service_content)))
         return listData
-    }
-
-    private fun setMultiTestAdapter(listData: ArrayList<MultiTestEntity>) {
-        var listEntity = listData
-        listEntity.add(MultiTestEntity("原生RecyclerView", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("dataBinding测试demo", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("litePal数据库", "跳转", MultiTestEntity.TYPE_1))
-        listEntity.add(MultiTestEntity("brvah", "跳转", MultiTestEntity.TYPE_1))
-        var multiTestAdapter = MultiTestAdapter(listEntity)
-        listView?.adapter = multiTestAdapter
-        multiTestAdapter?.setOnItemClickListener { adapter, view, position ->
-            when (position) {
-                ITEM_RECYCLERVIEW -> {
-                    var intent = Intent()
-                    intent.setClass(this, RecyclerViewTestActivity::class.java)
-                    startActivity(intent)
-                }
-                ITEM_MVVM -> {
-                    var intent = Intent()
-                    intent.setClass(this, TestMvvmActivity::class.java)
-                    startActivity(intent)
-                }
-                ITEM_LITE_PAL -> {
-                    var intent = Intent()
-                    intent.setClass(this, LitePalActivity::class.java)
-                    startActivity(intent)
-                }
-                else -> {
-                    LogUtil.instance.d("当前位置：$position")
-                }
-            }
-        }
-        listView?.layoutManager = LinearLayoutManager(this)
     }
 
     private fun setNetListener() {
