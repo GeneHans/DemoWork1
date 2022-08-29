@@ -1,0 +1,94 @@
+@startuml
+'https://plantuml.com/sequence-diagram
+'类加载 字段解析流程
+start
+:解析字段所属类或接口的符号引用;
+if(有匹配) then(yes)
+    :返回直接引用;
+else(no)
+    :自下而上查询实现的接口和父接口;
+    if(有匹配) then(yes)
+        :返回字段的直接引用;
+    else(no)
+        :自下而上的查询父类;
+        if(有匹配) then(yes)
+            :返回字段的直接引用;
+        else(no)
+            :查找失败;
+            :NoSuchFieldError异常;
+            stop
+        endif
+    endif
+endif
+if(字段访问权限) then(不允许访问)
+    :IllegalAccessError异常;
+endif
+stop
+@enduml
+
+@startuml
+'https://plantuml.com/sequence-diagram
+'类加载 类方法解析
+start
+:解析方法所属类或接口的符号引用;
+    note right
+        类方法和接口方法
+        符号引用的常量类型是分开的
+    end note
+if(方法解析为接口) then(yes)
+    :IncompatibleClassChangeError异常;
+    stop
+endif
+if(类中有方法符号引用) then(yes)
+    :返回方法引用;
+else(no)
+    :在类的父类中递归查找;
+    if(有匹配) then(yes)
+        :返回直接引用;
+    else(no)
+        :查询接口和父接口;
+        if(有匹配) then(yes)
+            :抽象类;
+            :AbstractMethodError异常;
+        else(no)
+            :查找失败;
+            :NoSuchFieldError异常;
+            stop
+        endif
+    endif
+endif
+if(访问权限) then(不允许访问)
+    :IllegalAccessError异常;
+endif
+stop
+@enduml
+
+@startuml
+'https://plantuml.com/sequence-diagram
+'类加载 接口方法解析
+start
+:解析方法所属类或接口的符号引用;
+    note right
+        类方法和接口方法
+        符号引用的常量类型是分开的
+    end note
+if(方法解析为类方法) then(yes)
+    :IncompatibleClassChangeError异常;
+    stop
+endif
+if(接口中匹配到方法) then(yes)
+    :返回直接引用;
+else(no)
+    :在父接口查找;
+    if(有匹配) then(yes)
+        :返回直接引用;
+    else(no)
+        :查找失败;
+        :NoSuchFieldError异常;
+    endif
+endif
+stop
+    note right
+        接口的方法是public的，不存在访问权限问题
+    end note
+@enduml
