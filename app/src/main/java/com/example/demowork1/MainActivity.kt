@@ -23,6 +23,7 @@ import com.example.demowork1.service.ServiceActivity
 import com.example.demowork1.testListPages.TestListPageActivity
 import com.example.demowork1.testbrvah.SingleTestAdapter
 import com.example.demowork1.testbrvah.SingleTestEntity
+import com.example.demowork1.usb.UsbTestActivity
 import com.example.demowork1.util.LogUtil
 import com.example.demowork1.util.NetUtil
 import com.example.demowork1.util.PathUtil
@@ -33,8 +34,8 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_RECYCLERVIEW = 0
     //dataBinding测试demo
     private val ITEM_MVVM = 1
-    //ConstraintLayout
-    private val ITEM_CONSTRAINTLAYOUT = 2
+    //USB连接测试
+    private val ITEM_USB = 2
     //SQLite
     private val ITEM_SQLITE = 3
     //Android动画
@@ -53,6 +54,8 @@ class MainActivity : AppCompatActivity() {
     private val ITEM_COORDINATORLAYOUT = 10
     //简单内容练习
     private val ITEM_INTENT_SERVICE = 11
+    //ConstraintLayout
+    private val ITEM_CONSTRAINTLAYOUT = 12
     private var listView: RecyclerView? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -81,9 +84,9 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, TestMvvmActivity::class.java)
                     startActivity(intent)
                 }
-                ITEM_CONSTRAINTLAYOUT -> {
+                ITEM_USB ->{
                     var intent = Intent()
-                    intent.setClass(this, TestConstraintLayoutActivity::class.java)
+                    intent.setClass(this, UsbTestActivity::class.java)
                     startActivity(intent)
                 }
                 ITEM_SQLITE -> {
@@ -127,6 +130,11 @@ class MainActivity : AppCompatActivity() {
                     intent.setClass(this, ServiceActivity::class.java)
                     startActivity(intent)
                 }
+                ITEM_CONSTRAINTLAYOUT -> {
+                    var intent = Intent()
+                    intent.setClass(this, TestConstraintLayoutActivity::class.java)
+                    startActivity(intent)
+                }
                 else -> {
                     LogUtil.d("当前位置：$position")
                 }
@@ -141,7 +149,7 @@ class MainActivity : AppCompatActivity() {
         var listData = ArrayList<SingleTestEntity>()
         listData.add(SingleTestEntity("原生的RecyclerView", getString(R.string.recyclerview_content)))
         listData.add(SingleTestEntity("dataBinding测试demo", getString(R.string.dataBinding_content)))
-        listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
+        listData.add(SingleTestEntity("USB链接测试","USB链接"))
         listData.add(SingleTestEntity("SQLite", getString(R.string.sqlite_content)))
         listData.add(SingleTestEntity("Android动画", getString(R.string.anim_content)))
         listData.add(SingleTestEntity("android列表分页", getString(R.string.list_page_content)))
@@ -151,6 +159,7 @@ class MainActivity : AppCompatActivity() {
         listData.add(SingleTestEntity("二维码扫描", getString(R.string.qr_code_content)))
         listData.add(SingleTestEntity("CoordinatorLayout", getString(R.string.coordinator_content)))
         listData.add(SingleTestEntity("IntentService", getString(R.string.intent_service_content)))
+        listData.add(SingleTestEntity("ConstraintLayout", getString(R.string.constraintLayout_content)))
         return listData
     }
 
