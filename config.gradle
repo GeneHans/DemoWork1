@@ -1,0 +1,70 @@
+ext {
+    android = [
+            sourceCompatibilityVersion: JavaVersion.VERSION_1_8,
+            targetCompatibilityVersion: JavaVersion.VERSION_1_8,
+            minSdkVersion             : 21,
+            targetSdkVersion          : 28,
+            compileSdkVersion         : 30,
+            buildToolsVersion         : "28.0.3",
+            versionCode               : 1,
+            versionName               : "1.0.0"
+    ]
+    versions = [
+            // androidx libs
+            appCompatVersion              : "1.0.2",
+            recyclerViewVersion           : "1.2.0",
+            constraintLayoutVersion       : "2.0.4",
+            materialVersion               : "1.2.1",
+            roomVersion                   : "2.2.5",
+            // others
+            rxandroidVersion              : "2.1.1",
+            retrofitVersion               : "2.6.2",
+            multidexVersion               : "2.0.1",
+            okhttpVersion                 : "3.12.6",
+            gsonVersion                   : "2.8.2",
+            glideVersion                  : "4.10.0",
+            glideCompilerVersion          : "4.10.0",
+            glideOkhttp3IntegrationVersion: "4.10.0",
+            protobufVersion               : "3.1.0",
+            zxingVersion                  : "3.3.0",
+            annotationsJava5Version       : "15.0",
+            //test
+            junitVersion                  : "1.1.1",
+            espressoVersion               : "3.2.0",
+            mockitoVersion                : "2.8.9",
+            powermockVersion              : "1.7.3"
+    ]
+    dependencies = [
+            // androidx libs
+            appcompat                   : "androidx.appcompat:appcompat:${versions.appCompatVersion}",
+            recyclerView                : "androidx.recyclerview:recyclerview:${versions.recyclerViewVersion}",
+            constraintLayout            : "androidx.constraintlayout:constraintlayout:${versions.constraintLayoutVersion}",
+            material                    : "com.google.android.material:material:${versions.materialVersion}",
+            roomRuntime                 : "androidx.room:room-runtime:${versions.roomVersion}",
+            roomCompiler                : "androidx.room:room-compiler:${versions.roomVersion}",
+            roomRxJava2                 : "androidx.room:room-rxjava2:${versions.roomVersion}",
+            // others
+            rxandroid                   : "io.reactivex.rxjava2:rxandroid:${versions.rxandroidVersion}",
+            retrofit                    : "com.squareup.retrofit2:retrofit:${versions.retrofitVersion}",
+            retrofitGson                : "com.squareup.retrofit2:converter-gson:${versions.retrofitVersion}",
+            retrofitRxjava              : "com.squareup.retrofit2:adapter-rxjava2:${versions.retrofitVersion}",
+            multidex                    : "androidx.multidex:multidex:${versions.multidexVersion}",
+            okhttp                      : "com.squareup.okhttp3:okhttp:${versions.okhttpVersion}",
+            gson                        : "com.google.code.gson:gson:${versions.gsonVersion}",
+            glide                       : "com.github.bumptech.glide:glide:${versions.glideVersion}",
+            glideCompiler               : "com.github.bumptech.glide:compiler:${versions.glideCompilerVersion}",
+            glideOkhttp3Integration     : "com.github.bumptech.glide:okhttp3-integration:${versions.glideOkhttp3IntegrationVersion}",
+            protobuf                    : "com.google.protobuf:protobuf-java:${versions.protobufVersion}",
+            zxing                       : "com.google.zxing:core:${versions.zxingVersion}",
+            annotationsJava5            : "org.jetbrains:annotations-java5:${versions.annotationsJava5Version}",
+            //test
+            roomTesting                 : "androidx.room:room-testing:${versions.roomVersion}",
+            junit                       : "androidx.test.ext:junit:${versions.junitVersion}",
+            espresso                    : "androidx.test.espresso:espresso-core:${versions.espressoVersion}",
+            mockito                     : "org.mockito:mockito-core:${versions.mockitoVersion}",
+            powermockJunit4             : "org.powermock:powermock-module-junit4:${versions.powermockVersion}",
+            powermockJunit4Rule         : "org.powermock:powermock-module-junit4-rule:${versions.powermockVersion}",
+            powermockApiMockito2        : "org.powermock:powermock-api-mockito2:${versions.powermockVersion}",   //注意这里是mockito2
+            powermockClassLoadingXStream: "org.powermock:powermock-classloading-xstream:${versions.powermockVersion}"
+    ]
+}

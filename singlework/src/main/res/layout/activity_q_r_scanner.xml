@@ -34,7 +34,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="32dp"
-        android:drawableTop="@drawable/selector_torch"
         android:drawablePadding="12dp"
         android:gravity="center"
         android:text="打开照明"
