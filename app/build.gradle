@@ -1,7 +1,7 @@
-if (Integer.valueOf(runModule) == 1) {
-    apply plugin: 'com.android.application'
-} else {
+if (String.valueOf(runModule) == "singlework") {
     apply plugin: 'com.android.library'
+} else {
+    apply plugin: 'com.android.application'
 }
 
 apply plugin: 'kotlin-android'
@@ -13,7 +13,7 @@ android {
     buildToolsVersion rootProject.ext.android["buildToolsVersion"]
 
     defaultConfig {
-        if (Integer.valueOf(runModule) == 1) {
+        if (String.valueOf(runModule) == "app") {
             applicationId "com.example.demowork1"
         }
         minSdkVersion rootProject.ext.android["minSdkVersion"]

@@ -1,4 +1,4 @@
-if (Integer.valueOf(runModule) == 2) {
+if (String.valueOf(runModule) == "singlework") {
     apply plugin: 'com.android.application'
 } else {
     apply plugin: 'com.android.library'
@@ -11,7 +11,7 @@ android {
     buildToolsVersion "30.0.3"
 
     defaultConfig {
-        if (Integer.valueOf(runModule) == 2) {
+        if (String.valueOf(runModule) == "singlework") {
             applicationId "com.example.demowork1"
         }
         minSdkVersion 21

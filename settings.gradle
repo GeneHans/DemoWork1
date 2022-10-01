@@ -1,8 +1,12 @@
-include ':apt_lib'
-include ':common'
-include ':singleJavaWork'
-include ':singlework'
-include ':annotationTest'
-include ':processorTest'
-include ':app'
+if (String.valueOf(runModule) == "singlework") {
+    include ':singlework'
+} else {
+    include ':apt_lib'
+    include ':common'
+    include ':singleJavaWork'
+    include ':singlework'
+    include ':annotationTest'
+    include ':processorTest'
+    include ':app'
+}
 rootProject.name = "DemoWork1"
